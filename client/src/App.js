@@ -40,14 +40,14 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
+        
             <Navbar />
             <Routes>
               <Route 
                 path="/" 
                 element={<Home />} 
               />
-              {/* <Route 
+              <Route 
                 path="/login" 
                 element={<Login />} 
               />
@@ -55,11 +55,11 @@ function App() {
                 path="/signup" 
                 element={<Signup />} 
               />
-              <Route 
+              {/* <Route 
                 path="/scores" 
                 element={<Scores />} 
               />
-              {/* <Route 
+              <Route 
                 path="/success" 
                 element={<Success />} 
               />
@@ -72,7 +72,6 @@ function App() {
                 element={<NoMatch />} 
               /> */}
             </Routes>
-          </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
