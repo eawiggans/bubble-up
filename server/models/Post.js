@@ -1,5 +1,22 @@
 const { Schema, model } = require('mongoose');
 
-const _ = model('', Schema);
+const postSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  message: {
+    type: String,
+    required: true
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
+}, {
+  timestamps: true
+});
 
-module.exports = _;
+const Post = model('Post', postSchema);
+
+module.exports = Post;
