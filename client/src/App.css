@@ -33,9 +33,13 @@
 a h3 {
   transition: color 140ms ease-in-out;
 }
+
 a:hover h3 {
   color: var(--col-p-200);
 }
 a:active:focus h3 {
   color: var(--col-p-500);
+}
+.signup-link {
+  color: #1a1b26 !important;
 }
