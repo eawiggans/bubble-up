@@ -9,6 +9,6 @@ const subjectSchema = new Schema({
   timestamps: true
 });
 
-const _ = model('', subjectSchema);
+const Subject = model('Subject', subjectSchema);
 
-module.exports = _;
+module.exports = Subject;

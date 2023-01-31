@@ -1,5 +1,18 @@
 const { Schema, model } = require('mongoose');
 
-const _ = model('', Schema);
+const questionTypeSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  points: {
+	type: Number,
+	required: true
+  }
+}, {
+  timestamps: true
+});
 
-module.exports = _;
+const QuestionType = model('QuestionType', questionTypeSchema);
+
+module.exports = QuestionType;
