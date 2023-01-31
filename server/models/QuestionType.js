@@ -1,13 +1,13 @@
 const { Schema, model } = require('mongoose');
 
-const questionTypeSchema = new mongoose.Schema({
+const questionTypeSchema = new Schema({
   name: {
     type: String,
     required: true
   },
   points: {
-	type: Number,
-	required: true
+    type: Number,
+    required: true
   }
 }, {
   timestamps: true
