@@ -1,7 +1,7 @@
 :root {
-  --col-bg: #1c1c1c;
-  --col-surface: #303030;
-  --col-surface2: #5c5c5c;
+  --col-bg: #1a1b26;
+  --col-surface: #24283b;
+  --col-surface2: #414868;
   --col-surface3: #565f89;
   --col-p-200: #7dcfff;
   --col-p-500: #7aa2f7;
@@ -17,9 +17,25 @@
   --col-warning: #f8b425;
   --col-info: #38a5f8;
 }
+::-webkit-scrollbar {
+  width: 0px;
+}
+.select-none {
+  -webkit-user-select: none;
+  user-select: none;
+}
 .nav-bubble-logo {
   width: 3.25rem;
 }
 .navbar .container img {
   max-height: 3.25rem;
+}
+a h3 {
+  transition: color 140ms ease-in-out;
+}
+a:hover h3 {
+  color: var(--col-p-200);
+}
+a:active:focus h3 {
+  color: var(--col-p-500);
 }

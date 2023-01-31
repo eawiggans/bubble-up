@@ -14,7 +14,10 @@ function Navbar() {
     if (Auth.loggedIn()) {
       return (
         <div className="container justify-content-space-between">
-          <Logo />
+          <div className="row ps-1">
+            <Logo />
+            <h1 className="mb-0 mx-3 mt-1">Bubble Up</h1>
+          </div>
           <div className="row flex-row">
             <Link to="/scores">
               <h3 className="mb-0 px-2">Scores</h3>
@@ -29,13 +32,16 @@ function Navbar() {
       // Logged out Nav
       return (
         <div className="container justify-content-space-between">
-          <Logo />
-          <div className="row flex-row">
+          <div className="row ps-1 py-1">
+            <Logo />
+            <h1 className="mb-0 mx-3 mt-1 select-none">Bubble Up</h1>
+          </div>
+          <div className="row flex-row pe-1">
             <Link to="/signup">
-              <h4 className="mb-0 px-2">Signup</h4>
+              <h3 className="mb-0 px-2">Signup</h3>
             </Link>
             <Link to="/login">
-              <h4 className="mb-0 px-2">Login</h4>
+              <h3 className="mb-0 px-2">Login</h3>
             </Link>
           </div>
         </div>
@@ -43,7 +49,7 @@ function Navbar() {
     }
   }
 
-  return <nav className="navbar">{showNavigation()}</nav>;
+  return <nav className="navbar p-0">{showNavigation()}</nav>;
 }
 
 export default Navbar;

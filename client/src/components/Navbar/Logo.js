@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/bubbleUpLogo.png';
+import logo from '../../assets/bubbleUpLogoV3.png';
 
 function Logo() {
     return (
