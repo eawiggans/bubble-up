@@ -32,7 +32,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className='container mt-5'>
       <div class="container col-4 card justify-content-center flex-column p-3 mt-5">
         <div class="row justify-content-center">
           <h1>Sign Up!</h1>
