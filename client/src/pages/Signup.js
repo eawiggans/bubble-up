@@ -76,7 +76,7 @@ const Signup = () => {
           </div>
           <div className="row justify-content-center">
             <input
-              placeholder="******"
+              placeholder="Password"
               name="password"
               type="password"
               id="pwd"
@@ -87,6 +87,9 @@ const Signup = () => {
             <button className="btn btn-primary mt-2" type="submit">Submit</button>
           </div>
         </form>
+        <div class="row justify-content-center mt-3">
+        <Link to="/login">Already signed up?</Link>
+        </div>
       </div>
     </div>
   );

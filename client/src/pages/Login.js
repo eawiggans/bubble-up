@@ -35,37 +35,7 @@ function Login(props) {
         <div class="row justify-content-center">
           <h1>Log In</h1>
         </div>
-        <div class="row justify-content-center mb-1">
-        <Link to="/signup">Not signed up?</Link>
-        </div>
         <form className="container flex-column" onSubmit={handleFormSubmit}>
-          <div className="row justify-content-center">
-            <input
-              placeholder="First Name"
-              name="firstName"
-              type="firstName"
-              id="firstName"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="row justify-content-center">
-            <input
-              placeholder="Last Name"
-              name="lastName"
-              type="lastName"
-              id="lastName"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="row justify-content-center">
-            <input
-              placeholder="youremail@test.com"
-              name="email"
-              type="email"
-              id="email"
-              onChange={handleChange}
-            />
-          </div>
           <div className="row justify-content-center">
             <input
               placeholder="username"
@@ -93,6 +63,9 @@ function Login(props) {
             <button className="btn btn-primary mt-2" type="submit">Submit</button>
           </div>
         </form>
+        <div class="row justify-content-center mt-3">
+        <Link to="/signup">Not signed up?</Link>
+        </div>
       </div>
     </div>
   );
