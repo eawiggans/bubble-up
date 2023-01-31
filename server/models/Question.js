@@ -1,7 +1,9 @@
-const questionSchema = new mongoose.Schema({
+const { Schema, model } = require('mongoose');
+
+const questionSchema = Schema({
   type: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Type',
+    type: Schema.Types.ObjectId,
+    ref: 'QuestionType',
     required: true
   },
   text: {
@@ -20,3 +22,7 @@ const questionSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
+const Question = model('Question', questionSchema);
+
+module.exports = Question;
