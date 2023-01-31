@@ -11,13 +11,24 @@ const questionSchema = Schema({
     required: true
   },
   choices: {
-    type: [String]
+    type: [String],
+    required: false
   },
   answer: {
-    type: String
+    type: String,
+    required: true
+  },
+  hint: {
+    type: [String],
+    required: false
+  },
+  followUp: {
+    type: Schema.Types.ObjectId,
+    ref: 'Question',
+    required: false
   },
   feedback: {
-	type: String
+	  type: String
   }
 }, {
   timestamps: true
