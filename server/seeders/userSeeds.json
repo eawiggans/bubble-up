@@ -1,0 +1,161 @@
+[
+    {
+      "username": "Sapphire",
+      "email": "bkernighan@techfriends.dev",
+      "password": "password01",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": []
+    },
+    {
+      "username": "Crumb",
+      "email": "mkanatalexander@techfriends.dev",
+      "password": "password02",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": []
+    },
+    {
+      "username": "Glue",
+      "email": "wtls@techfriends.dev",
+      "password": "password03",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": []
+    },
+    {
+      "username": "KentBeck",
+      "email": "kbeck@techfriends.dev",
+      "password": "password04",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": []
+    },
+    {
+      "username": "Alakay",
+      "email": "akay@techfriends.dev",
+      "password": "password06",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": []
+    },
+    {
+      "username": "Froggy",
+      "email": "choare@techfriends.dev",
+      "password": "password07",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": []
+    },
+    {
+      "username": "DavidThomas",
+      "email": "dthomas@techfriends.dev",
+      "password": "password08",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": []
+    },
+    {
+      "username": "DonaldKnuth",
+      "email": "dknuth@techfriends.dev",
+      "password": "password09",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    },
+    {
+      "username": "Lernantino",
+      "email": "lernantino@techfriends.dev",
+      "password": "password10",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    },
+    {
+      "username": "Lynn24",
+      "email": "lynn24@gmail.com",
+      "password": "password123",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    },
+    {
+      "username": "Elfo",
+      "email": "hiImElfo@elfmail.com",
+      "password": "password123",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    },
+    {
+      "username": "GrumboWumbo45",
+      "email": "grumbo@gmail.com",
+      "password": "password123",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    },
+    {
+      "username": "TripleJ",
+      "email": "jjj@gmail.com",
+      "password": "password123",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    },
+    {
+      "username": "FredsMom",
+      "email": "linda@gmail.com",
+      "password": "password123",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    },
+    {
+      "username": "tooboi",
+      "email": "japica123@gmail.com",
+      "password": "password123",
+      "followers": [],
+      "following": [],
+      "userPosts": [],
+      "userLikes": [],
+      "followerCount": "20",
+      "followingCount": "83",
+      "profileImgURL": "urlurl"
+    }
+  ]
