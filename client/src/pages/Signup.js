@@ -38,7 +38,7 @@ const Signup = () => {
           <h1>Sign Up!</h1>
         </div>
         <form className="container flex-column" onSubmit={handleFormSubmit}>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-1">
             <input
               placeholder="First Name"
               name="firstName"
@@ -47,7 +47,7 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-1">
             <input
               placeholder="Last Name"
               name="lastName"
@@ -56,7 +56,7 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-1">
             <input
               placeholder="youremail@test.com"
               name="email"
@@ -65,7 +65,7 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-1">
             <input
               placeholder="username"
               name="username"
@@ -74,9 +74,9 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-1">
             <input
-              placeholder="Password"
+              placeholder="password"
               name="password"
               type="password"
               id="pwd"

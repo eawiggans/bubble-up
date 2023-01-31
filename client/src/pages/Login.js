@@ -36,7 +36,7 @@ function Login(props) {
           <h1>Log In</h1>
         </div>
         <form className="container flex-column" onSubmit={handleFormSubmit}>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-1">
             <input
               placeholder="username"
               name="username"
@@ -45,7 +45,7 @@ function Login(props) {
               onChange={handleChange}
             />
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-1">
             <input
               placeholder="******"
               name="password"
