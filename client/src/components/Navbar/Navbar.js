@@ -1,58 +1,55 @@
-import React from "react";
-import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
+import Logo from './Logo';
 
 function Navbar() {
-
+  // Logout function
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+  // if logged in Nav
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
+        <div className="container justify-content-space-between">
+          <div className="row ps-1">
+            <Logo />
+            <h1 className="mb-0 mx-3 mt-1">Bubble Up</h1>
+          </div>
+          <div className="row flex-row">
             <Link to="/scores">
-              Scores
+              <h3 className="mb-0 px-2">Scores</h3>
             </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <button className="btn btn-secondary mx-2" onClick={logout}>
               Logout
-            </a>
-          </li>
-        </ul>
+            </button>
+          </div>
+        </div>
       );
     } else {
+      // Logged out Nav
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
+        <div className="container justify-content-space-between">
+          <div className="row ps-1 py-1">
+            <Logo />
+            <h1 className="mb-0 mx-3 mt-1 select-none">Bubble Up</h1>
+          </div>
+          <div className="row flex-row pe-1">
             <Link to="/signup">
-              Signup
+              <h3 className="mb-0 px-2">Signup</h3>
             </Link>
-          </li>
-          <li className="mx-1">
             <Link to="/login">
-              Login
+              <h3 className="mb-0 px-2">Login</h3>
             </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       );
     }
   }
 
-  return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          Bubble Up
-        </Link>
-      </h1>
-
-      <nav>
-        {showNavigation()}
-      </nav>
-    </header>
-  );
+  return <nav className="navbar p-0">{showNavigation()}</nav>;
 }
 
 export default Navbar;
