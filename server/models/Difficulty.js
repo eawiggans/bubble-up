@@ -6,8 +6,8 @@ const difficultySchema = new Schema({
     required: true
   },
   pointModifier: {
-	type: Float,
-	required: true
+    type: Float,
+    required: true
   }
 }, {
   timestamps: true
