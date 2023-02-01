@@ -5,6 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 import MultChoice from '../components/MultChoice/MultChoice'
+import Algorithm from '../components/Algorithm/Landing'
 
 const Quiz = () => {
 
@@ -14,9 +15,10 @@ const Quiz = () => {
 
     return (
         <div className='full-dvh'>
-            <div className="container col-4 card justify-content-center force-v-center  p-3">
+            <div className="container  card justify-content-center force-v-center ">
                 <div className="row justify-content-center flex-column">
-                <MultChoice />
+                {/* <MultChoice /> */}
+                <Algorithm />
                 </div>
             </div>
         </div>

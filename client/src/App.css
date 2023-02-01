@@ -136,3 +136,6 @@ input + svg {
   background-color: transparent;
   text-align: center;
 }
+.max-576 {
+  max-width: 576px;
+}
