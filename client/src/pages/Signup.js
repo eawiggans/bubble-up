@@ -32,9 +32,9 @@ const Signup = () => {
   };
 
   return (
-    <div className='container mt-5'>
-      <div class="container col-4 card justify-content-center flex-column p-3 mt-5">
-        <div class="row justify-content-center">
+    <div className='full-dvh'>
+      <div className="container col-4 card justify-content-center force-v-center flex-column p-3">
+        <div className="row justify-content-center">
           <h1>Sign Up!</h1>
         </div>
         <form className="container flex-column" onSubmit={handleFormSubmit}>
@@ -87,7 +87,7 @@ const Signup = () => {
             <button className="btn btn-primary mt-2" type="submit">Submit</button>
           </div>
         </form>
-        <div class="row justify-content-center mt-3">
+        <div className="row justify-content-center mt-3">
         <Link to="/login">Already signed up?</Link>
         </div>
       </div>

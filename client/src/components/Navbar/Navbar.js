@@ -16,7 +16,7 @@ function Navbar() {
         <div className="container justify-content-space-between">
           <div className="row ps-1">
             <Logo />
-            <h1 className="mb-0 mx-3 mt-1">Bubble Up</h1>
+            <h1 className="mb-0 mx-3">Bubble Up</h1>
           </div>
           <div className="row flex-row">
             <Link to="/scores">
@@ -34,12 +34,9 @@ function Navbar() {
         <div className="container justify-content-space-between">
           <div className="row ps-1 py-1">
             <Logo />
-            <h1 className="mb-0 mx-3 mt-1 select-none">Bubble Up</h1>
+            <h1 className="mb-0 mx-3 select-none">Bubble Up</h1>
           </div>
           <div className="row flex-row pe-1">
-            <Link to="/signup">
-              <h3 className="mb-0 px-2">Signup</h3>
-            </Link>
             <Link to="/login">
               <h3 className="mb-0 px-2">Login</h3>
             </Link>
