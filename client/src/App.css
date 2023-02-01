@@ -114,3 +114,15 @@ input + svg {
 }
 
 /* - End Radio Buttons */
+
+
+/* Styles for profile page */
+
+.profile-subheads {
+  text-decoration: underline;
+}
+
+.user-card {
+  background-color: var(--col-bg) !important;
+}
+/* End Styles for profile page */
