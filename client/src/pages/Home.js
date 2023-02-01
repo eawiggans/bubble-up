@@ -14,7 +14,7 @@ const Home = () => {
       // Logged in Home Page
       return (
         <div className=" container col-6 card justify-content-center force-v-center flex-column p-3">
-          <form className="row align-items-center flex-column" onSubmit={handleFormSubmit}>
+          <form className="row align-items-center flex-column homeForm" onSubmit={handleFormSubmit}>
             <h1>Test Your Web Dev Knowledge</h1>
             <h2 className="mb-1">choose a subject</h2>
             <div className="mb-4 mt-2">

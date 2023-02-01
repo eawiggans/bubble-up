@@ -4,23 +4,19 @@
 import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 
+import MultChoice from '../components/MultChoice/MultChoice'
+
 const Quiz = () => {
 
 //   if (!Auth.loggedIn()) {
 //     return <Navigate to="/" />;
 //   }
 
-const handleFormSubmit = async (event) => {
-
-}
     return (
         <div className='full-dvh'>
-            <div className="container col-4 card justify-content-center force-v-center flex-column p-3">
-                <div className="row justify-content-center">
-                <h1>Quiz Page</h1>
-                    <form className="container flex-column" onSubmit={handleFormSubmit}>
-
-                    </form>
+            <div className="container col-4 card justify-content-center force-v-center  p-3">
+                <div className="row justify-content-center flex-column">
+                <MultChoice />
                 </div>
             </div>
         </div>
