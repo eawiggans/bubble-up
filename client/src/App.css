@@ -114,3 +114,25 @@ input + svg {
 }
 
 /* - End Radio Buttons */
+
+
+/* Styles for profile page */
+
+.profile-subheads {
+  text-decoration: underline;
+}
+
+.user-card {
+  background-color: var(--col-bg) !important;
+}
+/* End Styles for profile page */
+
+/* - Quiz page */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  text-align: center;
+}

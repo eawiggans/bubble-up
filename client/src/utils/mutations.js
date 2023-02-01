@@ -11,6 +11,17 @@ export const LOGIN = gql`
   }
 `;
 
+export const GET_USER = gql`
+  mutation getUser($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
 export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {

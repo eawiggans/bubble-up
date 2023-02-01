@@ -15,6 +15,7 @@ import Quiz from './pages/Quiz';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
+import Profile from './pages/Profile';
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -55,6 +56,10 @@ function App() {
               <Route 
                 path="/signup" 
                 element={<Signup />} 
+              />
+              <Route 
+                path="/profile" 
+                element={<Profile />} 
               />
               <Route 
                 path="/quiz" 
