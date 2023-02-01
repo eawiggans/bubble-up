@@ -32,8 +32,8 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <div class="container col-4 card justify-content-center flex-column p-3 mt-5">
+    <div className='full-dvh'>
+      <div class="container col-4 card justify-content-center force-v-center flex-column p-3 mt-5">
         <div class="row justify-content-center">
           <h1>Sign Up!</h1>
         </div>
