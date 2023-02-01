@@ -25,7 +25,18 @@ const userSchema = new Schema({
   },
   scores: [{
     type: Schema.Types.ObjectId,
-    ref: 'Score'
+    ref: 'Score',
+    required: false
+  }],
+  posts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Post',
+    required: false
+  }],
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment',
+    required: false
   }]
 });
 
