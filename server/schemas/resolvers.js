@@ -1,5 +1,6 @@
 import { AuthenticationError } from "apollo-server-express";
 import { Comment, Difficulty, Post, Question, QuestionType, Quiz, Scoreboard, Subject, User } from "../models/index";
+import { signToken } from '../utils/auth';
 
 const resolvers = {
   Query: {
@@ -65,14 +66,33 @@ const resolvers = {
     }
   },
   Mutation: {
-    createUser: async (parent, { input }) => {
-      return await User.create(input);
+    createUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
     },
     updateUser: async (parent, { id, input }) => {
       return await User.findByIdAndUpdate(id, input, { new: true });
     },
     deleteUser: async (parent, { id }) => {
       return await User.findByIdAndRemove(id);
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('No user found with this email address');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
     },
     createQuiz: async (parent, { input }) => {
       return Quiz.create(input);
