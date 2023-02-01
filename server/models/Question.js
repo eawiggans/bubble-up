@@ -10,25 +10,30 @@ const questionSchema = Schema({
     type: String,
     required: true
   },
-  choices: {
-    type: [String],
+  choices: [{
+    type: String,
     required: false
-  },
+  }],
   answer: {
     type: String,
     required: true
   },
-  hint: {
-    type: [String],
+  hint: [{
+    type: String,
     required: false
-  },
+  }],
   followUp: {
     type: Schema.Types.ObjectId,
     ref: 'Question',
     required: false
   },
   feedback: {
-	  type: String
+	  type: String,
+    required: false
+  },
+  expectedTime: {
+    type: Number,
+    required: false
   }
 }, {
   timestamps: true
