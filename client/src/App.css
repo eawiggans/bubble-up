@@ -17,23 +17,38 @@
   --col-warning: #f8b425;
   --col-info: #38a5f8;
 }
-::-webkit-scrollbar {
-  width: 0px;
+body::-webkit-scrollbar {
+  display: none;
 }
 .select-none {
   -webkit-user-select: none;
   user-select: none;
 }
 .nav-bubble-logo {
-  width: 3.25rem;
+  width: 3rem;
 }
 .navbar .container img {
-  max-height: 3.25rem;
+  max-height: 3rem;
 }
+.full-dvh {
+  height: 100dvh;
+}
+.force-v-center {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.home-page {
+  background-size: cover;
+  background-position: center;
+  height: 100dvh;
+}
+
+/* - Links */
+
 a h3 {
   transition: color 140ms ease-in-out;
 }
-
 a:hover h3 {
   color: var(--col-p-200);
 }
@@ -41,5 +56,61 @@ a:active:focus h3 {
   color: var(--col-p-500);
 }
 .signup-link {
-  color: #1a1b26 !important;
+  color: var(--col-on-primary);
 }
+
+/* - Radio Buttons */
+
+svg {
+  fill: var(--col-on-surface);
+  height: 2.5rem;
+  width: 2.5rem;
+}
+input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+}
+input[type='radio'] + svg {
+  -webkit-transition: fill 160ms;
+  transition: fill 160ms;
+}
+input + svg {
+  cursor: pointer;
+}
+.svg-html input[type='radio']:hover + svg,
+.svg-html input[type='radio']:checked + svg,
+.svg-html input[type='radio']:focus + svg {
+  fill: #e44d26;
+}
+.svg-css input[type='radio']:hover + svg,
+.svg-css input[type='radio']:checked + svg,
+.svg-css input[type='radio']:focus + svg {
+  fill: #1572b6;
+}
+.svg-js input[type='radio']:hover + svg,
+.svg-js input[type='radio']:checked + svg,
+.svg-js input[type='radio']:focus + svg {
+  fill: #f0db4f;
+}
+.svg-react input[type='radio']:hover + svg,
+.svg-react input[type='radio']:checked + svg,
+.svg-react input[type='radio']:focus + svg {
+  fill: #61dafb;
+}
+.svg-easy input[type='radio']:hover + svg,
+.svg-easy input[type='radio']:checked + svg,
+.svg-easy input[type='radio']:focus + svg {
+  fill: #2aa39a;
+}
+.svg-med input[type='radio']:hover + svg,
+.svg-med input[type='radio']:checked + svg,
+.svg-med input[type='radio']:focus + svg {
+  fill: #f8b425;
+}
+.svg-hard input[type='radio']:hover + svg,
+.svg-hard input[type='radio']:checked + svg,
+.svg-hard input[type='radio']:focus + svg {
+  fill: #ec4561;
+}
+
+/* - End Radio Buttons */
