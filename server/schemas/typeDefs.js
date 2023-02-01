@@ -49,7 +49,7 @@ const typeDefs = gql`
     text: String!
     choices: [String]
     answer: String!
-    hint: [String]
+    hints: [String]
     followUp: [Question]
     feedback: String
     expectedTime: Int

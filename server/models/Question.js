@@ -18,7 +18,7 @@ const questionSchema = Schema({
     type: String,
     required: true
   },
-  hint: [{
+  hints: [{
     type: String,
     required: false
   }],
