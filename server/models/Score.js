@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const scoreboardSchema = new Schema({
+const ScoreSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -19,6 +19,6 @@ const scoreboardSchema = new Schema({
   }
 });
 
-const Scoreboard = model('Scoreboard', scoreboardSchema);
+const Score = model('Score', ScoreSchema);
 
-module.exports = Scoreboard;
+module.exports = Score;

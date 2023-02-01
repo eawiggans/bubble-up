@@ -1,20 +1,20 @@
 import { AuthenticationError } from "apollo-server-express";
-import { Comment, Difficulty, Post, Question, QuestionType, Quiz, Scoreboard, Subject, User } from "../models/index";
+import { Comment, Difficulty, Post, Question, QuestionType, Quiz, Score, Subject, User } from "../models/index";
 import { signToken } from '../utils/auth';
 
 const resolvers = {
   Query: {
     users: async (parent, args) => {
-      return await User.find({});
+      return await User.find({}).populate('scores posts comments');
     },
     user: async (parent, { id }) => {
-      return await User.findById(id);
+      return await User.findById(id).populate('scores posts comments');
     },
     quizzes: async (parent, args) => {
-      return await Quiz.find({});
+      return await Quiz.find({}).populate('difficulty questions subject');
     },
     quiz: async (parent, { id }) => {
-      return await Quiz.findById(id);
+      return await Quiz.findById(id).populate('difficulty questions subject');
     },
     subjects: async (parent, args) => {
       return await Subject.find({});
@@ -29,10 +29,10 @@ const resolvers = {
       return await Difficulty.findById(id);
     },
     questions: async (parent, args) => {
-      return await Question.find({});
+      return await Question.find({}).populate('type followup');
     },
     question: async (parent, { id }) => {
-      return await Question.findById(id);
+      return await Question.findById(id).populate('type followup');
     },
     questionTypes: async (parent, args) => {
       return await QuestionType.find({});
@@ -40,23 +40,23 @@ const resolvers = {
     questionType: async (parent, { id }) => {
       return await QuestionType.findById(id);
     },
-    scoreboards: async (parent, args) => {
-      return await Scoreboard.find({});
+    scores: async (parent, args) => {
+      return await Score.find({}).populate('user quiz');
     },
-    scoreboard: async (parent, { id }) => {
-      return await Scoreboard.findById(id);
+    score: async (parent, { id }) => {
+      return await Score.findById(id);
     },
     posts: async (parent, args) => {
-      return await Post.find({});
+      return await Post.find({}).populate('user comments');
     },
     post: async (parent, { id }) => {
-      return await Post.findById(id);
+      return await Post.findById(id).populate('user comments');
     },
     comments: async (parent, args) => {
-      return await Comment.find({});
+      return await Comment.find({}).populate('post user');
     },
     comment: async (parent, { id }) => {
-      return await Comment.findById(id);
+      return await Comment.findById(id).populate('post user');
     },
     me: async (parent, args, context) => {
       if(context.user) {
@@ -72,7 +72,9 @@ const resolvers = {
       return { token, user };
     },
     updateUser: async (parent, { id, input }) => {
-      return await User.findByIdAndUpdate(id, input, { new: true });
+      const user = await User.findByIdAndUpdate(id, input, { new: true });
+      const token = signToken(user);
+      return { token, user };
     },
     deleteUser: async (parent, { id }) => {
       return await User.findByIdAndRemove(id);
@@ -94,62 +96,11 @@ const resolvers = {
 
       return { token, user };
     },
-    createQuiz: async (parent, { input }) => {
-      return Quiz.create(input);
-    },
-    updateQuiz: async (parent, { id, input }) => {
-      return await Quiz.findByIdAndUpdate(id, input, { new: true });
-    },
-    deleteQuiz: async (parent, { id }) => {
-      return await Quiz.findByIdAndRemove(id);
-    },
-    createSubject: async (parent, { input }) => {
-      return await Subject.create(input);
-    },
-    updateSubject: async (parent, { id, input }) => {
-      return await Subject.findByIdAndUpdate(id, input, { new: true });
-    },
-    deleteSubject: async (parent, { id }) => {
-      return await Subject.findByIdAndRemove(id);
-    },
-    createDifficulty: async (parent, { input }) => {
-      return Difficulty.create(input);
-    },
-    updateDifficulty: async (parent, { id, input }) => {
-      return await Difficulty.findByIdAndUpdate(id, input, { new: true });
-    },
-    deleteDifficulty: async (parent, { id }) => {
-      return await Difficulty.findByIdAndRemove(id);
-    },
-    createQuestion: async (parent, { input }) => {
-      return await Question.create(input);
-    },
-    updateQuestion: async (parent, { id, input }) => {
-      return await Question.findByIdAndUpdate(id, input, { new: true });
-    },
-    deleteQuestion: async (parent, { id }) => {
-      return await Question.findByIdAndRemove(id);
-    },
-    createQuestionType: async (parent, { input }) => {
-      return QuestionType.create(input);
-    },
-    updateQuestionType: async (parent, { id, input }) => {
-      return await QuestionType.findByIdAndUpdate(id, input, { new: true });
-    },
-    deleteQuestionType: async (parent, { id }) => {
-      return await QuestionType.findByIdAndRemove(id);
-    },
-    createScoreboard: async (parent, { input }) => {
-      return Scoreboard.create(input);
-    },
-    updateScoreboard: async (parent, { id, input }) => {
-      return await Scoreboard.findByIdAndUpdate(id, input, { new: true });
-    },
-    deleteScoreboard: async (parent, { id }) => {
-      return await Scoreboard.findByIdAndRemove(id);
+    createScore: async (parent, { input }) => {
+      return await Score.create(input);
     },
     createPost: async (parent, { input }) => {
-      return Post.create(input);
+      return await Post.create(input);
     },
     updatePost: async (parent, { id, input }) => {
       return await Post.findByIdAndUpdate(id, input, { new: true });
@@ -158,7 +109,7 @@ const resolvers = {
       return await Post.findByIdAndRemove(id);
     },
     createComment: async (parent, { input }) => {
-      return Comment.create(input);
+      return await Comment.create(input);
     },
     updateComment: async (parent, { id, input }) => {
       return await Comment.findByIdAndUpdate(id, input, { new: true });
