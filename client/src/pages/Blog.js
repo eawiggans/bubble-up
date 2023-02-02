@@ -1,24 +1,13 @@
-import React from 'react';
-
-
+import React from "react";
+import AllPosts from '../components/Blog/AllPosts';
+import SinglePost from '../components/Blog/SinglePost';
 const Blog = () => {
-
-    function QuestionList() {
-        const [state, dispatch]
-    }
-
     return (
-        <div className=''>
-            <div className="container justify-content-center mt-5">
-                <div className="row justify-content-center flex-column mt-5">
-                    <h1>Top Questions</h1>
-                    <div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div className="container justify-content-center mt-5">
+        <AllPosts />
+        {/* <SinglePost /> */}
+      </div>
     );
-}
-
-export default Blog;
+  };
+  
+  export default Blog;

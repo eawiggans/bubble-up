@@ -160,3 +160,19 @@ textarea:focus-visible {
 .max-960 {
   max-width: 960px;
 }
+
+
+/* Styles for Blog */
+
+.comment-section {
+  font-size: .75rem;
+}
+
+.comment-header {
+  color: var(--col-p-200);
+}
+.comment-user-info {
+  color: var(--col-p-500);
+}
+
+/* End styles for blog */
