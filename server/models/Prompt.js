@@ -1,19 +1,19 @@
 const { Schema, model } = require('mongoose');
 
-const quizSchema = new Schema({
-  title: {
+const promptSchema = new Schema({
+  prompt: {
     type: String,
     required: true
   },
-  prompts: [{
+  solutions: [{
     type: Schema.Types.ObjectId,
-    ref: 'Prompt',
+    ref: 'Solution',
     required: false
   }]
 }, {
   timestamps: true
 });
 
-const Quiz = model('Quiz', quizSchema);
+const Prompt = model('Prompt', promptSchema);
 
-module.exports = Quiz;
+module.exports = Prompt;
