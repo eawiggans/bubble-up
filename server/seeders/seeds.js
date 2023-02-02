@@ -2,7 +2,8 @@ const db = require('../config/connection');
 const { User, Quiz, Prompt, Solution, Feedback, InterviewInfo } = require('../models');
 const { create } = require('../models/Solution');
 const userSeeds = require('./userSeeds.json');
-const promptSeeds = require('./promptSeeds.json')
+const promptSeeds = require('./promptSeeds.json');
+const solutionSeeds = require('./solutionSeeds.json');
 
 db.once('open', async () => {
   try {
@@ -17,10 +18,31 @@ db.once('open', async () => {
     // Create new User documents
     await User.create(userSeeds);
     await Prompt.create(promptSeeds);
+    for (let i = 0; i < solutionSeeds.length; i++) {
+      const questionKey = solutionSeeds[i].questionKey;
+      delete solutionSeeds[i].questionKey;
+      console.log(solutionSeeds[i], questionKey);
 
-    // const prompt = await Prompt.find({ prompt: /object oriented programming/i });
+      const { _id: solutionId, username } = await Solution.create(solutionSeeds[i]);
+      console.log('Solution ID:', solutionId);
 
-    console.log(prompt);
+      await User.findOneAndUpdate(
+        { username },
+        { $addToSet: { solutions: solutionId } },
+        { runValidators: true }
+      );
+
+      const { _id: promptId } = await Prompt.findOneAndUpdate(
+        { prompt: { $regex: questionKey } },
+        { $addToSet: { solutions: solutionId } }
+      );
+      console.log('Prompt ID:', promptId);
+
+      await Solution.findByIdAndUpdate(
+        solutionId,
+        { promptId }
+      );
+    }
 
   } catch (error) {
     console.log(error);
