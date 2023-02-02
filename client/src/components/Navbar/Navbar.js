@@ -9,12 +9,15 @@ function Navbar() {
     event.preventDefault();
     Auth.logout();
   };
+  const blogApprove = () => {
+    // ! true or false if user has answered intro questions
+  }
   // if logged in Nav
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
 
-        // - if questionsDone is less than 5, no blog tab - //
+        // - pre questions, but logged in user - //
 
         <div className="container justify-content-space-between">
           <div className="row ps-1">
@@ -24,6 +27,29 @@ function Navbar() {
           <div className="row flex-row">
             <Link to="/scores">
               <h3 className="mb-0 px-2">Scores</h3>
+            </Link>
+            <button className="btn btn-secondary mx-2" onClick={logout}>
+              Logout
+            </button>
+          </div>
+        </div>
+      );
+    } if (Auth.loggedIn() && blogApprove()) {
+      return (
+
+        // - 5 questions answered so blog tab is available - //
+
+        <div className="container justify-content-space-between">
+          <div className="row ps-1">
+            <Logo />
+            <h1 className="mb-0 mx-3">Bubble Up</h1>
+          </div>
+          <div className="row flex-row">
+            <Link to="/scores">
+              <h3 className="mb-0 px-2">Scores</h3>
+            </Link>
+            <Link to="/blog">
+              <h3 className="mb-0 px-2">Blog</h3>
             </Link>
             <button className="btn btn-secondary mx-2" onClick={logout}>
               Logout
