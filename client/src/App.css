@@ -167,7 +167,12 @@ textarea:focus-visible {
 .comment-section {
   font-size: .75rem;
 }
-
+hr {
+  width: 100%;
+  background-color: var(--col-surface2);
+  height: 2px;
+  border: none;
+}
 .comment-header {
   color: var(--col-p-200);
 }

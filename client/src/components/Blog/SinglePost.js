@@ -9,9 +9,12 @@ const SinglePost = ({prompts}) => {
         <div className="row">Post content will go here.</div>
       </div>
       <div className="row flex-column comment-section mt-3">
+      <hr></hr>
         <div className="row comment-header">comments</div>
         <div className="row comment flex-column mt-2 ms-3">
-          <div>comment number one</div>
+          {/* <div>{prompts.map((prompts) => (
+          <SinglePost key={prompts._id} prompts={prompts}/>
+        ))}</div> */}
           <div className="comment-user-info">comment user // date</div>
         </div>
         <div className="row comment flex-column mt-2 ms-3">

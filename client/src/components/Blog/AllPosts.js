@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SinglePost from './SinglePost';
 
 const AllPosts = ({ prompts, title }) => {
-    console.log(prompts);
+    console.log(prompts[0].solutions);
 //   if (!prompts.length) {
 //       return <h3 className="mt-5">No Profiles Yet</h3>;
 //     }
@@ -21,7 +21,7 @@ const AllPosts = ({ prompts, title }) => {
       </div>
       <div>
         {prompts.map((prompts) => (
-          <SinglePost prompts={prompts}/>
+          <SinglePost key={prompts._id} prompts={prompts}/>
         ))}
       </div>
     </div>
