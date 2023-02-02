@@ -13,6 +13,9 @@ function Navbar() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
+
+        // - if questionsDone is less than 5, no blog tab - //
+
         <div className="container justify-content-space-between">
           <div className="row ps-1">
             <Logo />

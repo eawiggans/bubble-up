@@ -74,12 +74,12 @@ const Home = () => {
     } else {
       return (
         // Welcome Page - Not Logged In
-        <div className="container col-6 card justify-content-center force-v-center flex-column p-3">
+        <div className="container card max-960 justify-content-center force-v-center flex-column p-3">
           <div className="row align-items-center flex-column">
-            <h1>Rise Above Your Competition</h1>
-            <h2>or a better slogan</h2>
-            <h2>or maybe not</h2>
-            <h2>who knows</h2>
+            <h1>Absorb More Knowledge</h1>
+            <h2 className='mb-4 '>chat with peers about your recent coding challenges</h2>
+            <h3 className='mb-1 '>signup and answer a few intro questions</h3>
+            <h3 className='mb-1 '>you can now blog about your dev experience :)</h3>
           </div>
         </div>
       );

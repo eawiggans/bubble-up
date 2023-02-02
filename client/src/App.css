@@ -113,10 +113,7 @@ input + svg {
   fill: #ec4561;
 }
 
-/* - End Radio Buttons */
-
-
-/* Styles for profile page */
+/* - Styles for profile page */
 
 .profile-subheads {
   text-decoration: underline;
@@ -125,7 +122,6 @@ input + svg {
 .user-card {
   background-color: var(--col-bg) !important;
 }
-/* End Styles for profile page */
 
 /* - Quiz page */
 .footer {
@@ -136,6 +132,15 @@ input + svg {
   background-color: transparent;
   text-align: center;
 }
+
+/* - Card Adjustments */
+
+.max-376 {
+  max-width: 376px;
+}
 .max-576 {
   max-width: 576px;
+}
+.max-960 {
+  max-width: 960px;
 }

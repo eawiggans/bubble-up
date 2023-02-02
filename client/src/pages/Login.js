@@ -31,7 +31,7 @@ function Login(props) {
 
   return (
     <div className='full-dvh'>
-      <div className="container col-4 card justify-content-center force-v-center flex-column p-3">
+      <div className="container max-376 card justify-content-center force-v-center flex-column p-3">
         <div className="row justify-content-center">
           <h1>Log In</h1>
         </div>

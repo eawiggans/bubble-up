@@ -1,6 +1,6 @@
-import { AuthenticationError } from "apollo-server-express";
-import { Comment, Difficulty, Post, Question, QuestionType, Quiz, Score, Subject, User } from "../models/index";
-import { signToken } from '../utils/auth';
+const { AuthenticationError } = require('apollo-server-express');
+const { Comment, Difficulty, Post, Question, QuestionType, Quiz, Score, Subject, User } = require('../models/index');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -59,15 +59,15 @@ const resolvers = {
       return await Comment.findById(id).populate('post user');
     },
     me: async (parent, args, context) => {
-      if(context.user) {
+      if (context.user) {
         return await User.findOne({ username: context.user.username });
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
   },
   Mutation: {
-    createUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
@@ -116,7 +116,7 @@ const resolvers = {
     },
     deleteComment: async (parent, { id }) => {
       return await Comment.findByIdAndRemove(id);
-    }
-  }
-}
+    },
+  },
+};
 module.exports = resolvers;
