@@ -1,7 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userSchema = new Schema({
+// Declare the Schema of the Mongo model
+var userSchema = new Schema({
   firstName: {
     type: String,
     required: true
@@ -19,28 +20,25 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    match: [/.+@.+\..+/, 'Must match an email address!']
+    match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Please enter a valid email!']
   },
   password: {
     type: String,
     required: true,
-    minlength: 8
+    minLength: 8
   },
-  scores: [{
+  solutions: [{
     type: Schema.Types.ObjectId,
-    ref: 'Score',
+    ref: 'Solution',
     required: false
   }],
-  posts: [{
+  thoughts: [{
     type: Schema.Types.ObjectId,
-    ref: 'Post',
-    required: false
-  }],
-  comments: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Comment',
+    ref: 'Feedback',
     required: false
   }]
+}, {
+  timestamps: true
 });
 
 userSchema.pre('save', async function (next) {
@@ -58,4 +56,5 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 const User = model('User', userSchema);
 
+//Export the model
 module.exports = User;
