@@ -11,6 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
 import Scores from './pages/Scores';
+import Quiz from './pages/Quiz';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
@@ -62,8 +63,8 @@ function App() {
                 element={<Profile />} 
               />
               <Route 
-                path="/blog" 
-                element={<Blog />} 
+                path="/quiz" 
+                element={<Quiz />} 
               />
               {/* <Route 
                 path="/scores" 
