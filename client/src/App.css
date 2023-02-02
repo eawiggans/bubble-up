@@ -66,7 +66,7 @@ svg {
   height: 2.5rem;
   width: 2.5rem;
 }
-input[type='radio'] {
+.homeForm input[type='radio'] {
   position: absolute;
   opacity: 0;
 }
@@ -126,3 +126,16 @@ input + svg {
   background-color: var(--col-bg) !important;
 }
 /* End Styles for profile page */
+
+/* - Quiz page */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  text-align: center;
+}
+.max-576 {
+  max-width: 576px;
+}
