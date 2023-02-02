@@ -1,14 +1,16 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PRODUCTS = gql`
+export const QUERY_PROMPTS = gql`
   query getPrompts {
-    products {
+    getPrompts {
       _id
       prompt
       solutions {
         response
         username
-        feedback
+        feedback {
+            thoughts
+        }
       }
     }
   }
