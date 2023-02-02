@@ -136,12 +136,17 @@ textarea {
   min-width: 376px;
   width: 900px;
   max-width: 900px;
-  background-color: var(--col-on-surface);
+  background-color: var(--col-surface);
   border: 2px solid var(--col-surface3);
   border-radius: 0.5rem;
+  color: var(--col-on-surface);
 }
 textarea:focus-visible {
-  outline: var(--col-s-500) auto 1px;
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
+}
+.custom-btn {
+  width: 128px;
 }
 
 /* - Card Adjustments */

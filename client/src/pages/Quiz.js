@@ -8,7 +8,7 @@ import TextArea from '../components/TextArea/TextArea'
 import Algorithm from '../components/Algorithm/Algorithm'
 
 const Quiz = () => {
-
+// ! ADD THE RETURN TO THIS AUTH
 //   if (!Auth.loggedIn()) {
 //     return <Navigate to="/" />;
 //   }
