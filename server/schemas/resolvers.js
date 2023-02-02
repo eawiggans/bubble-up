@@ -1,122 +1,206 @@
-import { AuthenticationError } from "apollo-server-express";
-import { Comment, Difficulty, Post, Question, QuestionType, Quiz, Score, Subject, User } from "../models/index";
-import { signToken } from '../utils/auth';
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Quiz, Prompt, Solution, Feedback, InterviewInfo } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async (parent, args) => {
-      return await User.find({}).populate('scores posts comments');
+    getUsers: async () => {
+      return await User.find({}).populate('solutions thoughts');
     },
-    user: async (parent, { id }) => {
-      return await User.findById(id).populate('scores posts comments');
+    getUser: async (parent, { username }) => {
+      return await User.findOne({ username }).populate('solutions thoughts');
     },
-    quizzes: async (parent, args) => {
-      return await Quiz.find({}).populate('difficulty questions subject');
+    getQuizzes: async () => {
+      return await Quiz.find({}).populate('prompts');
     },
-    quiz: async (parent, { id }) => {
-      return await Quiz.findById(id).populate('difficulty questions subject');
+    getQuiz: async (parent, { id }) => {
+      return await Quiz.findById(id).populate('prompts');
     },
-    subjects: async (parent, args) => {
-      return await Subject.find({});
+    getPrompts: async () => {
+      return await Prompt.find({}).populate('solutions').populate({
+        path: 'solutions',
+        populate: 'feedback'
+      });
     },
-    subject: async (parent, { id }) => {
-      return await Subject.findById(id);
+    getPrompt: async (parent, { id }) => {
+      return await Prompt.findById(id).populate('solutions').populate({
+        path: 'solutions',
+        populate: 'feedback'
+      });
     },
-    difficulties: async (parent, args) => {
-      return await Difficulty.find({});
+    getSolutions: async () => {
+      return await Solution.find({}).populate('feedback');
     },
-    difficulty: async (parent, { id }) => {
-      return await Difficulty.findById(id);
+    getSolution: async (parent, { id }) => {
+      return await Solution.findById(id).populate('feedback');
     },
-    questions: async (parent, args) => {
-      return await Question.find({}).populate('type followup');
+    getAllFeedback: async () => {
+      return await Feedback.find({});
     },
-    question: async (parent, { id }) => {
-      return await Question.findById(id).populate('type followup');
+    getFeedback: async (parent, { id }) => {
+      return await Feedback.findById(id);
     },
-    questionTypes: async (parent, args) => {
-      return await QuestionType.find({});
+    getAllInterviewInfo: async () => {
+      return await InterviewInfo.find({}).populate('commFeedback');
     },
-    questionType: async (parent, { id }) => {
-      return await QuestionType.findById(id);
-    },
-    scores: async (parent, args) => {
-      return await Score.find({}).populate('user quiz');
-    },
-    score: async (parent, { id }) => {
-      return await Score.findById(id);
-    },
-    posts: async (parent, args) => {
-      return await Post.find({}).populate('user comments');
-    },
-    post: async (parent, { id }) => {
-      return await Post.findById(id).populate('user comments');
-    },
-    comments: async (parent, args) => {
-      return await Comment.find({}).populate('post user');
-    },
-    comment: async (parent, { id }) => {
-      return await Comment.findById(id).populate('post user');
+    getInterviewInfo: async (parent, { id }) => {
+      return await InterviewInfo.findById(id).populate('commFeedback');
     },
     me: async (parent, args, context) => {
-      if(context.user) {
-        return await User.findOne({ username: context.user.username });
+      if (context.user) {
+        return await User.findOne({ _id: context.user._id }).populate('solutions thoughts');
       }
       throw new AuthenticationError('You need to be logged in!');
     }
   },
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+    addUser: async (parent, { newUser }) => {
+      const user = await User.create(newUser);
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { id, input }) => {
-      const user = await User.findByIdAndUpdate(id, input, { new: true });
-      const token = signToken(user);
-      return { token, user };
-    },
-    deleteUser: async (parent, { id }) => {
-      return await User.findByIdAndRemove(id);
-    },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+    login: async (parent, { userCred }) => {
+      let user;
+      if (userCred.username) {
+        const username = userCred.username;
+        user = await User.findOne({ username });
+      } else {
+        const email = userCred.email;
+        user = await User.findOne({ email });
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      if(!user) {
+        throw new AuthenticationError('No user found!');
+      }
 
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+      const passwordCheck = await user.isCorrectPassword(userCred.password);
+
+      if (!passwordCheck) {
+        throw new AuthenticationError('Incorrect credentials!');
       }
 
       const token = signToken(user);
 
       return { token, user };
     },
-    createScore: async (parent, { input }) => {
-      return await Score.create(input);
+    addPrompt: async (parent, { prompt }) => {
+      return await Prompt.create({ prompt });
     },
-    createPost: async (parent, { input }) => {
-      return await Post.create(input);
+    removePrompt: async (parent, { id }) => {
+      return await Prompt.findByIdAndDelete(id);
     },
-    updatePost: async (parent, { id, input }) => {
-      return await Post.findByIdAndUpdate(id, input, { new: true });
+    addSolution: async (parent, { id, newSolution }, context) => {
+      let solution;
+      newSolution.promptId = id;
+      if(context.user) {
+        newSolution.username = context.user.username;
+        solution = await Solution.create(newSolution);
+      } else {
+        solution = await Solution.create(newSolution);
+      }
+
+      await User.findOneAndUpdate(
+        { username: solution.username },
+        { $addToSet: { solutions: solution._id } },
+        { runValidators: true }
+      );
+      
+      await Prompt.findByIdAndUpdate(
+        { _id: id },
+        { $addToSet: { solutions: solution._id } }
+      );
+      
+      return solution;
     },
-    deletePost: async (parent, { id }) => {
-      return await Post.findByIdAndRemove(id);
+    editSolution: async (parent, { id, response }) => {
+      return await Solution.findByIdAndUpdate(
+        id,
+        { response },
+        { new: true }
+      );
     },
-    createComment: async (parent, { input }) => {
-      return await Comment.create(input);
+    removeSolution: async (parent, { id }) => {
+      const solution = await Solution.findByIdAndDelete(id);
+
+      console.log(solution);
+
+      if (solution.username) {
+        await User.findOneAndUpdate(
+          { username: solution.username },
+          { $pull: { solutions: solution._id } },
+          { runValidators: true }
+        );
+      }
+      
+      if (solution.promptId) {
+        await Prompt.findByIdAndUpdate(
+          { _id: solution.promptId },
+          { $pull: { solutions: solution._id } }
+        );
+      }
+
+      return solution;
     },
-    updateComment: async (parent, { id, input }) => {
-      return await Comment.findByIdAndUpdate(id, input, { new: true });
+    addFeedback: async (parent, { id, newFeedback }, context) => {
+      let feedback;
+      newFeedback.solutionId = id;
+      if (context.user) {
+        newFeedback.username = context.user.username;
+        feedback = await Feedback.create(newFeedback);
+      } else {
+        feedback = await Feedback.create(newFeedback);
+      }
+
+      const user = await User.findOneAndUpdate(
+        { username: feedback.username },
+        { $addToSet: { thoughts: feedback._id } },
+        { runValidators: true }
+      );
+      
+      await Solution.findByIdAndUpdate(
+        { _id: id },
+        { $addToSet: { feedback: feedback._id } }
+      );
+      
+      return feedback;
     },
-    deleteComment: async (parent, { id }) => {
-      return await Comment.findByIdAndRemove(id);
+    editFeedback: async (parent, { id, thoughts }) => {
+      return await Feedback.findByIdAndUpdate(
+        id,
+        { thoughts },
+        { new: true }
+      );
+    },
+    removeFeedback: async (parent, { id }) => {
+      const feedback = await Feedback.findByIdAndDelete(id);
+      console.log(feedback);
+
+      if (feedback.username) {
+        await User.findOneAndUpdate(
+          { username: feedback.username },
+          { $pull: { thoughts: feedback._id } },
+          { runValidators: true }
+        );
+      }
+      
+      if (feedback.solutionId) {
+        await Solution.findByIdAndUpdate(
+          { _id: feedback.solutionId },
+          { $pull: { feedback: feedback._id } }
+        );
+      }
+
+      return feedback;
+    },
+    submitInterviewPrompt: async (parent, { interviewForm }, context) => {
+      if (context.user) {
+        interviewForm['username'] = context.user.username;
+        
+        return await InterviewInfo.create(interviewForm);
+      }
+      throw new AuthenticationError('You need to be logged in to submit!');
     }
   }
-}
+};
+
 module.exports = resolvers;

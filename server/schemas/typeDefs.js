@@ -2,127 +2,87 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    _id: ID!
-    firstName: String!
-    lastName: String!
-    username: String!
-    email: String!
-    password: String!
-    scores: [Score]
-    posts: [Post]
-    comments: [Comment]
-  }
-
-  input Signup {
-    firstName: String!
-    lastName: String!
-    username: String!
-    email: String!
-    password: String!
-  }
-
-  input Login {
-    username: String
-    email: String
-    password: String!
-  }
-
-  input UpdateUser {
+    _id: ID
     firstName: String
     lastName: String
+    username: String
+    email: String
+    password: String
+    solutions: [Solution]
+    thoughts: [Feedback]
+  }
+
+  "For signup data"
+  input Signup {
+    firstName: String
+    lastName: String
+    username: String
+    email: String
+    password: String    
+  }
+
+  
+  "For login data"
+  input Login {
     username: String
     email: String
     password: String
   }
 
   type Quiz {
-    _id: ID!
-    difficulty: String
-    questions: [Question]
+    _id: ID
+    title: String
+    prompts: [Prompt]
+  }
+
+  type Prompt {
+    _id: ID
+    prompt: String
+    solutions: [Solution]
+  }
+
+  type Solution {
+    _id: ID
+    response: String
+    username: String
+    feedback: [Feedback]
+  }
+
+  input NewSolution {
+    response: String
+    username: String
+  }
+
+  type Feedback {
+    _id: ID
+    thoughts: String
+    username: String
+  }
+
+  input NewFeedback {
+    thoughts: String
+    username: String
+  }
+
+  type InterviewInfo {
+    _id: ID
+    location: String
+    position: String
     subject: String
-    timeLimit: Int
+    prompt: String
+    response: String
+    resFeedback: String
+    commFeedBack: [Feedback]
   }
 
-  type Question {
-    _id: ID!
-    type: QuestionType
-    text: String!
-    choices: [String]
-    answer: String!
-    hints: [String]
-    followUp: [Question]
-    feedback: String
-    expectedTime: Int
-  }
-
-  type QuestionType {
-    _id: ID!
-    name: String!
-  }
-
-  type Difficulty {
-    _id: ID!
-    name: String!
-    pointModifier: Float
-  }
-
-  type Subject {
-    _id: ID!
-    name: String!
-  }
-
-  type Score {
-    _id: ID!
-    userId: User
-    quizId: Quiz
-    score: Int
-    dateOfCompletion: String
-  }
-
-  input NewScore {
-    _id: ID!
-    username: ID!
-    quiz: ID!
-    score: Int!
-  }
-
-  type Post {
-    _id: ID!
-    title: String!
-    message: String!
-    user: User
-    comments: [Comment]
-    createdAt: String
-  }
-
-  input NewPost {
-    title: String!
-    message: String!
-    user: User
-  }
-
-  input UpdatedPost {
-    title: String!
-    message: String!
-  }
-
-  type Comment {
-    _id: ID!
-    message: String!
-    userId: User
-    postId: Post
-    createdAt: String
-  }
-
-
-  input NewComment {
-    message: String!
-    userId: User!
-    postId: Post!
-  }
-
-  input UpdatedComment {
-    message: String!
+  input NewInfo {
+    username: String
+    location: String
+    position: String
+    subject: String
+    prompt: String
+    response: String
+    resFeedback: String
   }
 
   type Auth {
@@ -131,40 +91,33 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
-    user(id: ID!): User
-    quizzes: [Quiz]
-    quiz(id: ID!): Quiz
-    subjects: [Subject]
-    subject(id: ID!): Subject
-    difficulties: [Difficulty]
-    difficulty(id: ID!): Difficulty
-    questions: [Question]
-    question(id: ID!): Question
-    questionTypes: [QuestionType]
-    questionType(id: ID!): QuestionType
-    Scores: [Score]
-    Score(id: ID!): Score
-    posts: [Post]
-    post(id: ID!): Post
-    comments: [Comment]
-    comment(id: ID!): Comment
+    getUsers: [User]
+    getUser(username: String!): User
+    getQuizzes: [Quiz]
+    getQuiz(id: ID!): Quiz
+    getPrompts: [Prompt]
+    getPrompt(id: ID!): Prompt
+    getSolutions: [Solution]
+    getSolution(id: ID!): Solution
+    getAllFeedback: [Feedback]
+    getFeedback(id: ID!): Feedback
+    getAllInterviewInfo: [InterviewInfo]
+    getInterviewInfo(id: ID!): InterviewInfo
     me: User
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, username: String!, password: String!): Auth
-    updateUser(id: ID!, input: UpdateUser!): User!
-    deleteUser(id: ID!): User!
-    login(input: Login!): Auth!
-    createScore(input: NewScore!): Score!
-    deleteScore(id: ID!): Score!
-    createPost(input: NewPost!): Post!
-    updatePost(id: ID!, input: UpdatedPost!): Post!
-    deletePost(id: ID!): Post!
-    createComment(input: NewComment!): Comment!
-    updateComment(id: ID!, input: UpdatedComment!): Comment!
-    deleteComment(id: ID!): Comment!
+    addUser(newUser: Signup!): Auth
+    login(userCred: Login!): Auth
+    addPrompt(prompt: String!): Prompt
+    removePrompt(id: ID!): Prompt
+    addSolution(id: ID!, newSolution: NewSolution!): Solution
+    editSolution(id: ID!, response: String!): Solution
+    removeSolution(id: ID!): Solution
+    addFeedback(id: ID!, newFeedback: NewFeedback!): Feedback
+    editFeedback(id: ID!, thoughts: String!): Feedback
+    removeFeedback(id: ID!): Feedback
+    submitInterviewPrompt(interviewForm: NewInfo!): InterviewInfo
   }
 `;
 
