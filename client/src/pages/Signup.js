@@ -4,8 +4,8 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations copy';
 
-const Signup = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: '', password: '', username: '', firstName: '', lastName: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -33,7 +33,7 @@ const Signup = () => {
 
   return (
     <div className='full-dvh'>
-      <div className="container col-4 card justify-content-center force-v-center flex-column p-3">
+      <div className="container max-376 card justify-content-center force-v-center flex-column p-3">
         <div className="row justify-content-center">
           <h1>Sign Up!</h1>
         </div>
@@ -79,7 +79,7 @@ const Signup = () => {
               placeholder="password"
               name="password"
               type="password"
-              id="pwd"
+              id="password"
               onChange={handleChange}
             />
           </div>

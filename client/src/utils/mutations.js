@@ -35,5 +35,3 @@ mutation Login($userCred: Login!) {
     }
   }
 }`;
-
-module.exports = { SIGNUP, LOGIN };
