@@ -10,6 +10,7 @@ const SinglePost = () => {
                     <div className="row flex-column comment-section mt-1">
                         <div className="row">comments</div>
                         <div className="row">Comment number one</div>
+                        <div className="row justify-content-end">add comment</div>
                     </div>
                 </div>
             </div>
@@ -17,3 +18,6 @@ const SinglePost = () => {
 };
 
 export default SinglePost;
+
+
+

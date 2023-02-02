@@ -17,6 +17,7 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
 import Blog from './pages/Blog'
+import SinglePost from './components/Blog/SinglePost'
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -66,11 +67,12 @@ function App() {
                 path="/quiz" 
                 element={<Quiz />} 
               />
-              {/* <Route 
-                path="/scores" 
-                element={<Scores />} 
-              />
               <Route 
+                    path="/blog" 
+                element={<Blog />} 
+              />
+              <Route exact path='/about' component={SinglePost} />
+            {/* <Route 
                 path="/success" 
                 element={<Success />} 
               />

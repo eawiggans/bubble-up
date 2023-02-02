@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const AllPosts = () => {
+const MyPosts = () => {
     return (
             <div className="container col-8 flex-column m-5">
                 <div className="row card flex-column justify-content-center">
-                    <h2 className="row justify-content-center">Bubble Wrap - All Posts</h2>
+                    <h2 className="row justify-content-center">Bubble Wrap - My Posts</h2>
                     <div className="row flex-row justify-content-space-between">
                         <div className="ms-3">view your posts</div>
                         <div className="me-3">add a post</div>
@@ -24,4 +24,4 @@ const AllPosts = () => {
     );
 };
 
-export default AllPosts;
+export default MyPosts;
