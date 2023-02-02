@@ -113,10 +113,7 @@ input + svg {
   fill: #ec4561;
 }
 
-/* - End Radio Buttons */
-
-
-/* Styles for profile page */
+/* - Styles for profile page */
 
 .profile-subheads {
   text-decoration: underline;
@@ -125,7 +122,6 @@ input + svg {
 .user-card {
   background-color: var(--col-bg) !important;
 }
-/* End Styles for profile page */
 
 /* - Quiz page */
 .footer {
@@ -136,9 +132,35 @@ input + svg {
   background-color: transparent;
   text-align: center;
 }
+textarea {
+  min-width: 376px;
+  width: 900px;
+  max-width: 900px;
+  background-color: var(--col-surface);
+  border: 2px solid var(--col-surface3);
+  border-radius: 0.5rem;
+  color: var(--col-on-surface);
+}
+textarea:focus-visible {
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
+}
+.custom-btn {
+  width: 128px;
+}
+
+/* - Card Adjustments */
+
+.max-376 {
+  max-width: 376px;
+}
 .max-576 {
   max-width: 576px;
 }
+.max-960 {
+  max-width: 960px;
+}
+
 
 /* Styles for Blog */
 
