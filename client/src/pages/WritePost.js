@@ -41,24 +41,49 @@ const WritePost = () => {
 
                 <div className="row card container flex-column mt-3 p-3">
                     <div className="row flex-row justify-content-space-between">
-                        <h3 className="column">create post</h3>
+                        <h3 className="column">share your interview experience</h3>
                         <div className="column"><Link to='/blog'>return to post feed</Link></div></div>
                     <form className="container flex-column" onSubmit={handleFormSubmit}>
                         <div><input
                             className="form-input"
-                            placeholder="post title"
-                            name="title"
+                            placeholder="interview location"
+                            name="location"
                             type="text"
-                            value={formState.title}
+                            value={formState.location}
+                            onChange={handleChange}
+                        /></div>
+                        <div className="mt-1"><input
+                            className="form-input"
+                            placeholder="position interviewed for"
+                            name="position"
+                            type="text"
+                            value={formState.position}
+                            onChange={handleChange}
+                        /></div>
+                        <div className="mt-1"><input
+                            className="form-input"
+                            placeholder="question subject area"
+                            name="subject"
+                            type="text"
+                            value={formState.subject}
                             onChange={handleChange}
                         /></div>
                         <textarea
                             className="form-input mt-2"
-                            placeholder="tell us you what you're thinking"
-                            name="message"
+                            placeholder="what was the interview prompt?"
+                            name="prompt"
+                            cols="60"
+                            rows="5"
+                            value={formState.prompt}
+                            onChange={handleChange}>
+                        </textarea>
+                        <textarea
+                            className="form-input mt-2"
+                            placeholder="how did you handle it?"
+                            name="response"
                             cols="60"
                             rows="10"
-                            value={formState.message}
+                            value={formState.response}
                             onChange={handleChange}>
                         </textarea>
                         <div className="row justify-content-end"><button
