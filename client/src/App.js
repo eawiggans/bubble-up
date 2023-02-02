@@ -17,8 +17,8 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
 import Blog from './pages/Blog'
-import SinglePost from './components/Blog/SinglePost'
-import WritePost from './pages/WritePost';
+// import SinglePost from './components/Blog/SinglePost'
+// import WritePost from './pages/WritePost';
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -72,10 +72,10 @@ function App() {
                     path="/blog" 
                 element={<Blog />} 
               />
-              <Route 
+              {/* <Route 
                     path="/writepost" 
                 element={<WritePost />} 
-              />
+              /> */}
             {/* <Route 
                 path="/success" 
                 element={<Success />} 

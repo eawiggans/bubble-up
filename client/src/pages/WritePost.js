@@ -6,12 +6,15 @@ import Auth from '../utils/auth';
 
 const WritePost = () => {
     const [formState, setFormState] = useState({
-        title: '',
-        message: '',
+        location: '',
+        position: '',
+        subject: '',
+        prompt: '',
+        response: '',
+
     });
     const [addPost, { error, data }] = useMutation(ADD_POST);
 
-    // update state based on form input changes
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -21,7 +24,6 @@ const WritePost = () => {
         });
     };
 
-    // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
