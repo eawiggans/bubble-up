@@ -1,0 +1,32 @@
+[
+  {
+    "username": "Titan_Mark",
+    "response": "A web developer is responsible for creating and maintaining websites. They write code using languages such as HTML, CSS, and JavaScript.",
+    "questionKey": "web developer"
+  },
+  {
+    "username": "Genius_Boi",
+    "response": "The basic responsibilities of a web developer include designing and building websites, creating and implementing web applications, testing and fixing bugs, and ensuring website performance and security. They may also collaborate with designers, marketers, and other stakeholders to create an optimal user experience.",
+    "questionKey": "web developer"
+  },
+  {
+    "username": "Tech_Guru_Jess",
+    "response": "As a web developer, you are responsible for the full development life cycle of websites and web applications. This includes understanding user requirements, creating technical specifications, writing clean and maintainable code, testing and debugging, and deploying and updating the website or application. Additionally, you may be responsible for ongoing optimization, scalability, security, and user experience testing and improvement.",
+    "questionKey": "web developer"
+  },
+  {
+    "username": "Scala_Ninja",
+    "response": "As a freelance web developer, you have the added responsibilities of managing your own workload, communicating effectively with clients, meeting deadlines, and managing your own finances and billing. You may also need to continually upskill in order to stay ahead of the latest trends and technologies in web development.",
+    "questionKey": "web developer"
+  },
+  {
+    "username": "Savvy_Marie",
+    "response": "A full stack web developer has a more comprehensive understanding of both front-end and back-end development. In addition to the responsibilities mentioned above, they may also be responsible for creating and integrating APIs, managing databases, and creating and managing server-side logic.",
+    "questionKey": "web developer"
+  },
+  {
+    "username": "Data_Science_Pro",
+    "response": "In addition to the responsibilities of a web developer, a team lead is also responsible for leading and mentoring a team of developers. This includes delegating tasks, providing guidance and feedback, fostering a positive and productive work environment, and ensuring the team is meeting project deadlines and delivering high-quality work.",
+    "questionKey": "web developer"
+  }
+]
