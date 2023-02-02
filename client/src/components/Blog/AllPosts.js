@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_PROMPTS } from '../../utils/queries';
 
 
-const AllPosts = () => {
-
-    const { loading, data } = useQuery(QUERY_PRODUCTS);
-
+const AllPosts = ({prompts, title}) => {
 
     return (
         <div className="container col-8 flex-column m-5">
