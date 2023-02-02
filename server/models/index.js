@@ -1,11 +1,8 @@
-import Comment from "./Comment";
-import Difficulty from "./Difficulty";
-import Post from "./Post";
-import Question from "./Question";
-import QuestionType from "./QuestionType";
-import Quiz from "./Quiz";
-import Score from "./Score";
-import Subject from "./Subject";
-import User from "./User";
+const User = require('./User');
+const Quiz = require('./Quiz');
+const Prompt = require('./Prompt');
+const Solution = require('./Solution');
+const Feedback = require('./Feedback');
+const InterviewInfo = require('./InterviewInfo');
 
-module.exports = { Comment, Difficulty, Post, Question, QuestionType, Quiz, Score, Subject, User };
+module.exports = { User, Quiz, Prompt, Solution, Feedback, InterviewInfo };
