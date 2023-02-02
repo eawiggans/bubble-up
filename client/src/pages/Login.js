@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { LOGIN } from '../utils/queries';
+import { LOGIN } from '../utils/mutations copy';
 import Auth from '../utils/auth';
 
 function Login(props) {
@@ -31,7 +31,7 @@ function Login(props) {
 
   return (
     <div className='full-dvh'>
-      <div className="container col-4 card justify-content-center force-v-center flex-column p-3">
+      <div className="container max-376 card justify-content-center force-v-center flex-column p-3">
         <div className="row justify-content-center">
           <h1>Log In</h1>
         </div>

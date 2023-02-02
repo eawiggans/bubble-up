@@ -4,21 +4,21 @@
 import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 
-import MultChoice from '../components/MultChoice/MultChoice'
-import Algorithm from '../components/Algorithm/Landing'
+import TextArea from '../components/TextArea/TextArea'
+import Algorithm from '../components/Algorithm/Algorithm'
 
 const Quiz = () => {
-
+// ! ADD THE RETURN TO THIS AUTH
 //   if (!Auth.loggedIn()) {
 //     return <Navigate to="/" />;
 //   }
 
     return (
         <div className='full-dvh'>
-            <div className="container  card justify-content-center force-v-center ">
+            <div className="container max-960 card justify-content-center force-v-center ">
                 <div className="row justify-content-center flex-column">
-                {/* <MultChoice /> */}
-                <Algorithm />
+                <TextArea />
+                {/* <Algorithm /> */}
                 </div>
             </div>
         </div>

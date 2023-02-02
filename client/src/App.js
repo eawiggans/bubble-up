@@ -10,7 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 // import { StoreProvider } from './utils/GlobalState';
 
 import Home from './pages/Home';
-import Scores from './pages/Scores';
+import Blog from './pages/Blog';
 import Quiz from './pages/Quiz';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
