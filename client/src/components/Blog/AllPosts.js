@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import SinglePost from './SinglePost';
 
 const AllPosts = ({ prompts, title }) => {
-  // if (!prompts.length) {
-  //     return <h3 className="mt-5">No Profiles Yet</h3>;
-  //   }
+    console.log(prompts);
+//   if (!prompts.length) {
+//       return <h3 className="mt-5">No Profiles Yet</h3>;
+//     }
 
   return (
     <div className="container col-8 flex-column m-5">

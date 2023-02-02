@@ -7,8 +7,7 @@ import { QUERY_PROMPTS } from '../utils/queries';
 
 const Blog = () => {
   const { loading, error, data } = useQuery(QUERY_PROMPTS);
-  const prompts = data?.prompts || [];
-
+  const prompts = data?.getPrompts || [];
   // * SWAP AUTH !
 
   if (Auth.loggedIn()) {

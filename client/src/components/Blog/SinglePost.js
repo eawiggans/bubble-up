@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SinglePost = ({prompts}) => {
+    // console.log(prompts.data);
   return (
     <div className="row card post-item flex-column mt-3 p-3">
       <div className="blog-post">

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const QUERY_USERS = gql`
+export const QUERY_USERS = gql`
   query GetUsers {
     getUsers {
       _id
@@ -17,9 +17,10 @@ const QUERY_USERS = gql`
         thoughts
       }
     }
-  }`;
+  }
+`;
 
-const QUERY_ME = gql`
+export const QUERY_ME = gql`
   query Me {
     me {
       _id
@@ -36,25 +37,29 @@ const QUERY_ME = gql`
         thoughts
       }
     }
-  }`;
+  }
+`;
 
-const QUERY_PROMPTS = gql`
-  query GetPrompts {
+export const QUERY_PROMPTS = gql`
+  query getPrompts {
     getPrompts {
       _id
       prompt
       solutions {
-        response
-        username
+        _id
         feedback {
           thoughts
           username
+          _id
         }
+        username
+        response
       }
     }
-  }`;
+  }
+`;
 
-const QUERY_SOLUTIONS = gql`
+export const QUERY_SOLUTIONS = gql`
   query GetSolutions {
     getSolutions {
       _id
@@ -65,31 +70,15 @@ const QUERY_SOLUTIONS = gql`
         username
       }
     }
-  }`;
+  }
+`;
 
-const QUERY_ALL_FEEDBACK = gql`
+export const QUERY_ALL_FEEDBACK = gql`
   query GetAllFeedback {
     getAllFeedback {
       _id
       thoughts
       username
-    }
-  }`;
-
-module.exports = { QUERY_USERS, QUERY_PROMPTS, QUERY_SOLUTIONS, QUERY_ALL_FEEDBACK, QUERY_ME };
-
-export const QUERY_PROMPTS = gql`
-  query getPrompts {
-    getPrompts {
-      _id
-      prompt
-      solutions {
-        response
-        username
-        feedback {
-            thoughts
-        }
-      }
     }
   }
 `;
