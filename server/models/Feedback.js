@@ -13,6 +13,11 @@ const feedbackSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Solution',
     required: false
+  },
+  interviewInfoId: {
+    type: Schema.Types.ObjectId,
+    ref: 'InterviewInfo',
+    required: false
   }
 }, {
   timestamps: true

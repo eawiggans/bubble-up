@@ -4,10 +4,11 @@ const { create } = require('../models/Solution');
 const userSeeds = require('./userSeeds.json');
 const promptSeeds = require('./promptSeeds.json');
 const solutionSeeds = require('./solutionSeeds.json');
+const feedbackSeeds = require('./feedbackSeeds.json')
 
 db.once('open', async () => {
   try {
-    // Delete all existing User documents
+    // Delete all existing Bubble Up documents
     await User.collection.drop();
     await Quiz.collection.drop();
     await Prompt.collection.drop();
@@ -15,16 +16,15 @@ db.once('open', async () => {
     await Feedback.collection.drop();
     await InterviewInfo.collection.drop();
 
-    // Create new User documents
+    // Create new documents
     await User.create(userSeeds);
     await Prompt.create(promptSeeds);
+    
     for (let i = 0; i < solutionSeeds.length; i++) {
       const questionKey = solutionSeeds[i].questionKey;
       delete solutionSeeds[i].questionKey;
-      console.log(solutionSeeds[i], questionKey);
 
       const { _id: solutionId, username } = await Solution.create(solutionSeeds[i]);
-      console.log('Solution ID:', solutionId);
 
       await User.findOneAndUpdate(
         { username },
@@ -36,12 +36,38 @@ db.once('open', async () => {
         { prompt: { $regex: questionKey } },
         { $addToSet: { solutions: solutionId } }
       );
-      console.log('Prompt ID:', promptId);
 
       await Solution.findByIdAndUpdate(
         solutionId,
         { promptId }
       );
+
+      const solutionFeedback = feedbackSeeds.filter((feedback) => {
+        if (feedback.promptKey === questionKey && feedback.replyTo === username) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      solutionFeedback.forEach(async (feedback) => {
+        solutionFeedback.solutionId = solutionId;
+        delete feedback.replyTo;
+        delete feedback.promptKey;
+        
+        const { _id: feedbackId } = await Feedback.create(feedback);
+
+        await Solution.findByIdAndUpdate(
+          solutionId,
+          { $addToSet: { feedback: feedbackId } }
+        );
+
+        await User.findOneAndUpdate(
+          { username: feedback.username },
+          { $addToSet: { thoughts: feedbackId } },
+          { runValidators: true }
+        );
+      });
     }
 
   } catch (error) {
