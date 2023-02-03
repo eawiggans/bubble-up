@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
-import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 
 const InterviewFeed = ({ interviews }) => {
 
@@ -11,6 +11,7 @@ const InterviewFeed = ({ interviews }) => {
     // }
 
     return (
+        <div className="container justify-content-center mt-5">
         <div className="container col-8 flex-column m-5">
             <div className="row card flex-column justify-content-center">
                 <h2 className="row justify-content-center">Interview Experiences</h2>
@@ -44,6 +45,7 @@ const InterviewFeed = ({ interviews }) => {
                 </div>
             </div>
             ))}
+        </div>
         </div>
     );
 };

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_INTERVIEW } from '../utils/mutations';
-import Auth from '../utils/auth';
+
 
 const WritePost = () => {
     const [formState, setFormState] = useState({
+        username: '',
         location: '',
         position: '',
         subject: '',
@@ -13,7 +14,8 @@ const WritePost = () => {
         response: '',
 
     });
-    const [addPost, { error, data }] = useMutation(ADD_INTERVIEW);
+
+    const [submitInterviewPrompt, { error }] = useMutation(ADD_INTERVIEW);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -29,12 +31,15 @@ const WritePost = () => {
         console.log(formState);
 
         try {
-            const { data } = await addPost({
-                variables: { ...formState },
+            const { data } = await submitInterviewPrompt({
+                variables:
+                {interviewForm: { ...formState } }
+                    
             });
+
         } catch (e) {
             console.error(e);
-        }
+        };
     };
 
     return (
@@ -44,8 +49,17 @@ const WritePost = () => {
                 <div className="row card container flex-column mt-3 p-3">
                     <div className="row flex-row justify-content-space-between">
                         <h3 className="column">share your interview experience</h3>
-                        <div className="column"><Link to='/blog'>return to post feed</Link></div></div>
-                    <form className="container flex-column" onSubmit={handleFormSubmit}>
+                        <div className="column"><Link to='/blog'>return to post feed</Link></div>
+                    </div>
+                    <form className="container row flex-column" onSubmit={handleFormSubmit}>
+                        <div><input
+                            className="form-input"
+                            placeholder="username"
+                            name="username"
+                            type="text"
+                            value={formState.username}
+                            onChange={handleChange}
+                        /></div>
                         <div><input
                             className="form-input"
                             placeholder="interview location"
@@ -71,34 +85,31 @@ const WritePost = () => {
                             onChange={handleChange}
                         /></div>
                         <textarea
-                            className="form-input mt-2"
+                            className="form-input row mt-2"
                             placeholder="what was the interview prompt?"
                             name="prompt"
-                            cols="60"
+                            cols="30"
                             rows="5"
                             value={formState.prompt}
                             onChange={handleChange}>
                         </textarea>
                         <textarea
-                            className="form-input mt-2"
+                            className="form-input row mt-2"
                             placeholder="how did you handle it?"
                             name="response"
-                            cols="60"
+                            cols="30"
                             rows="10"
                             value={formState.response}
                             onChange={handleChange}>
                         </textarea>
-                        <div className="row justify-content-end"><button
-                            className="btn btn-primary mt-2"
-                            style={{ cursor: 'pointer' }}
-                            type="submit"
-                        >
-                            Submit
-                        </button>
+                        <div className="row justify-content-end">
+                            <Link to='/interviewfeed'><button
+                                className="btn btn-primary mt-2"
+                                type="submit"
+                            >Submit</button></Link>
                         </div>
-
-//                     </form>
-//                 </div>
+                    </form>
+                </div>
             </div>
         </div>
     );

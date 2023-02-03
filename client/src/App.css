@@ -175,4 +175,7 @@ textarea:focus-visible {
   color: var(--col-p-500);
 }
 
+text-area {
+  width: 100%;
+}
 /* End styles for blog */

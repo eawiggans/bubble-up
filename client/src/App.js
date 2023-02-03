@@ -20,6 +20,7 @@ import Profile from './pages/Profile';
 import SinglePost from './components/Blog/SinglePost'
 import WritePost from './pages/WritePost';
 import './App.css';
+import InterviewFeed from './pages/InterviewFeed';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -72,10 +73,14 @@ function App() {
                     path="/blog" 
                 element={<Blog />} 
               />
-              {/* <Route 
+              <Route 
                     path="/writepost" 
                 element={<WritePost />} 
-              /> */}
+              />
+              <Route 
+                    path="/interviewfeed" 
+                element={<InterviewFeed />} 
+              />
             {/* <Route 
                 path="/success" 
                 element={<Success />} 
