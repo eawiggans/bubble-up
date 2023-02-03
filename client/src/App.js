@@ -16,8 +16,9 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
-// import SinglePost from './components/Blog/SinglePost'
-// import WritePost from './pages/WritePost';
+
+import SinglePost from './components/Blog/SinglePost'
+import WritePost from './pages/WritePost';
 import './App.css';
 
 const httpLink = createHttpLink({

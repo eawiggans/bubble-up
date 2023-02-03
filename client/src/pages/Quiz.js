@@ -5,7 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 import TextArea from '../components/TextArea/TextArea'
-import Algorithm from '../components/Algorithm/Algorithm'
+// import Algorithm from '../components/Algorithm/Algorithm'
 
 const Quiz = () => {
 // ! ADD THE RETURN TO THIS AUTH

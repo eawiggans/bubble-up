@@ -1,22 +1,24 @@
-import React from "react";
-import InterviewFeed from '../components/Blog/InterviewFeed';
-import SinglePost from '../components/Blog/SinglePost';
-import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_INTERVIEWS } from '../utils/queries';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import AllPosts from '../components/Blog/AllPosts';
+import Auth from '../utils/auth';
+import { useQuery } from '@apollo/client';
+import { QUERY_PROMPTS } from '../utils/queries';
 
 const Blog = () => {
+  const { loading, error, data } = useQuery(QUERY_PROMPTS);
+  const prompts = data?.getPrompts || [];
+  // * SWAP AUTH !
 
-  const { loading, data } = useQuery(QUERY_INTERVIEWS);
-
-  const interviews = data?.interviewInfo || []; 
-
-    return (
-      <div className="container justify-content-center mt-5">
-        <InterviewFeed 
-        interviewInfo={interviews}/>
-        {/* <SinglePost /> */}
-      </div>
-    );
-  };
-  
-  export default Blog;
+  if (Auth.loggedIn()) {
+    return <Navigate to="/" />;
+  }
+  if (!Auth.loggedIn()) {
+    return <div className="container justify-content-center mt-5">
+    {loading ? (<div className='mt-5'>Loading...</div>) : error ? (<div className='mt-5'>{error.message}</div>)
+    : 
+    <AllPosts prompts={prompts} title="Top Questions" />}
+    </div>;
+  }
+};
+export default Blog;

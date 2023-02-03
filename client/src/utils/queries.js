@@ -17,9 +17,10 @@ export const QUERY_USERS = gql`
         thoughts
       }
     }
-  }`;
+  }
+`;
 
-  export const QUERY_ME = gql`
+export const QUERY_ME = gql`
   query Me {
     me {
       _id
@@ -36,25 +37,29 @@ export const QUERY_USERS = gql`
         thoughts
       }
     }
-  }`;
+  }
+`;
 
-  export const QUERY_PROMPTS = gql`
-  query GetPrompts {
+export const QUERY_PROMPTS = gql`
+  query getPrompts {
     getPrompts {
       _id
       prompt
       solutions {
-        response
-        username
+        _id
         feedback {
           thoughts
           username
+          _id
         }
+        username
+        response
       }
     }
-  }`;
+  }
+`;
 
-  export const QUERY_SOLUTIONS = gql`
+export const QUERY_SOLUTIONS = gql`
   query GetSolutions {
     getSolutions {
       _id
@@ -65,29 +70,15 @@ export const QUERY_USERS = gql`
         username
       }
     }
-  }`;
+  }
+`;
 
-  export const QUERY_ALL_FEEDBACK = gql`
+export const QUERY_ALL_FEEDBACK = gql`
   query GetAllFeedback {
     getAllFeedback {
       _id
       thoughts
       username
     }
-  }`;
-
-  export const QUERY_INTERVIEWS = gql`
-  query GetAllInterviewInfo {
-    getAllInterviewInfo {
-      _id
-      username
-      location
-      position
-      subject
-      prompt
-      response
-      resFeedback
-    }
-  }`;
-
-
+  }
+`;

@@ -97,8 +97,8 @@ const WritePost = () => {
                         </button>
                         </div>
 
-                    </form>
-                </div>
+//                     </form>
+//                 </div>
             </div>
         </div>
     );
