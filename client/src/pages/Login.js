@@ -60,7 +60,7 @@ function Login(props) {
           </div>
         ) : null}
           <div className="row justify-content-center">
-            <button className="btn btn-primary mt-2" type="submit">Submit</button>
+            <Link to='/profile'><button className="btn btn-primary mt-2" type="submit">Submit</button></Link>
           </div>
         </form>
         <div className="row justify-content-center mt-3">
