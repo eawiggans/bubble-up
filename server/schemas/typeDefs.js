@@ -39,6 +39,8 @@ const typeDefs = gql`
     _id: ID
     prompt: String
     solutions: [Solution]
+    createdAt: String
+    updatedAt: String
   }
 
   type Solution {
@@ -46,6 +48,8 @@ const typeDefs = gql`
     response: String
     username: String
     feedback: [Feedback]
+    createdAt: String
+    updatedAt: String
   }
 
   input NewSolution {
@@ -57,6 +61,8 @@ const typeDefs = gql`
     _id: ID
     thoughts: String
     username: String
+    createdAt: String
+    updatedAt: String
   }
 
   input NewFeedback {
@@ -74,6 +80,8 @@ const typeDefs = gql`
     response: String
     resFeedback: String
     commFeedBack: [Feedback]
+    createdAt: String
+    updatedAt: String
   }
 
   input NewInfo {
