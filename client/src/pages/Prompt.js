@@ -21,12 +21,10 @@ const Prompt = () => {
 //     header = "Discussion"
 //   }
 
-    // ! SWAP AUTH !
-
-  if (Auth.loggedIn()) {
+  if (!Auth.loggedIn()) {
     return <Navigate to="/" />;
   }
-  if (!Auth.loggedIn()) {
+  if (Auth.loggedIn()) {
     return <div className="container justify-content-center mt-5">
             {loading ? 
                 <div className="mt-5">One sec...</div>

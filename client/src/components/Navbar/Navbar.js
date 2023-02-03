@@ -24,10 +24,15 @@ function Navbar() {
             <Logo />
             <h1 className="mb-0 mx-3">Bubble Up</h1>
           </div>
-          <div className="row flex-row">
-            <Link to="/scores">
-              <h3 className="mb-0 px-2">Scores</h3>
+          <div className="row flex-row align-items-center">
+            <Link to="/me">
+              <h3 className="mb-0 px-2">Profile</h3>
             </Link>
+            {/* REMOVE BELOW LINK FOR DEPLOYMENT */}
+            <Link to="/blog">
+              <h3 className="mb-0 px-2">Blog</h3>
+            </Link>
+            {/* REMOVE ABOVE */}
             <button className="btn btn-secondary mx-2" onClick={logout}>
               Logout
             </button>
@@ -45,8 +50,8 @@ function Navbar() {
             <h1 className="mb-0 mx-3">Bubble Up</h1>
           </div>
           <div className="row flex-row">
-            <Link to="/scores">
-              <h3 className="mb-0 px-2">Scores</h3>
+          <Link to="/profile">
+              <h3 className="mb-0 px-2">Profile</h3>
             </Link>
             <Link to="/blog">
               <h3 className="mb-0 px-2">Blog</h3>
