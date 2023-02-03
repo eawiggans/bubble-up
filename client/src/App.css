@@ -31,7 +31,7 @@ body::-webkit-scrollbar {
   max-height: 3rem;
 }
 .full-dvh {
-  height: 100dvh;
+  height: 100vh;
 }
 .force-v-center {
   position: relative;
@@ -161,21 +161,76 @@ textarea:focus-visible {
   max-width: 960px;
 }
 
-
-/* Styles for Blog */
+/* - Styles for Blog */
 
 .comment-section {
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
-
+hr {
+  width: 100%;
+  background-color: var(--col-surface2);
+  height: 2px;
+  border: none;
+}
 .comment-header {
   color: var(--col-p-200);
 }
 .comment-user-info {
   color: var(--col-p-500);
 }
-
-text-area {
+.comment-body {
+  font-size: 0.8125rem;
+}
+.blog-post .btn a {
+  color: var(--col-on-secondary);
+}
+.card-thin {
+  background-color: var(--col-surface2);
+  border: var(--line-2) solid var(--col-surface3);
+  border-radius: 0.5rem;
+}
+.corner-border {
+  display: inline;
+  color: var(--col-on-surface);
+  font-weight: 800;
+  font-size: 0.85rem;
+  background-color: var(--col-surface3);
+  border-top: var(--line-2) solid var(--col-surface3);
+  border-right: var(--line-2) solid var(--col-surface3);
+  border-bottom: var(--line-2) solid var(--col-surface3);
+  border-top-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  text-shadow: 1px 1px 2px var(--col-on-primary);
+}
+.plus-btn {
+  background-color: transparent;
+  border: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--col-on-surface);
+  cursor: pointer;
+}
+.plus-btn:hover .plus-svg {
+  fill: var(--col-p-200)
+}
+.plus-btn:focus:active .plus-svg {
+  fill: var(--col-on-surface)
+}
+.plus-svg {
+  height: 100%;
+}
+.custom-textarea {
+  min-width: 100%;
   width: 100%;
+  max-width: 100%;
+  background-color: var(--col-surface);
+  border: 2px solid var(--col-surface3);
+  border-radius: 0.5rem;
+  color: var(--col-on-surface);
+}
+
+.custom-textarea:focus-visible {
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
 }
 /* End styles for blog */

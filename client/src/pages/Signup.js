@@ -4,16 +4,27 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { SIGNUP } from '../utils/mutations';
 
-const Signup = () => {
-  const [formState, setFormState] = useState({ 
-    email: '', 
-    password: '', 
-    username: '', 
-    firstName: '', 
-    lastName: '' 
-  });
-
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: '', password: '', username: '', firstName: '', lastName: '' });
   const [addUser] = useMutation(SIGNUP);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        newUser: {
+          firstName: formState.firstName,
+        lastName: formState.lastName,
+        email: formState.email,
+        username: formState.username,
+        password: formState.password,
+        }
+        
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;

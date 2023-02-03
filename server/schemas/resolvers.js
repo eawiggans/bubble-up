@@ -22,8 +22,8 @@ const resolvers = {
         populate: 'feedback'
       });
     },
-    getPrompt: async (parent, { id }) => {
-      return await Prompt.findById(id).populate('solutions').populate({
+    getPrompt: async (parent, { promptId }) => {
+      return await Prompt.findById(promptId).populate('solutions').populate({
         path: 'solutions',
         populate: 'feedback'
       });
@@ -57,6 +57,7 @@ const resolvers = {
     addUser: async (parent, { newUser }) => {
       const user = await User.create(newUser);
       const token = signToken(user);
+      console.log("token: ", token);
       return { token, user };
     },
     login: async (parent, { userCred }) => {
@@ -197,8 +198,10 @@ const resolvers = {
         interviewForm['username'] = context.user.username;
         
         return await InterviewInfo.create(interviewForm);
+      } else {
+        return await InterviewInfo.create(interviewForm);
       }
-      throw new AuthenticationError('You need to be logged in to submit!');
+      // throw new AuthenticationError('You need to be logged in to submit!');
     }
   }
 };

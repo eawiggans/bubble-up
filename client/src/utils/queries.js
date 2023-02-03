@@ -59,6 +59,25 @@ export const QUERY_PROMPTS = gql`
   }
 `;
 
+export const QUERY_PROMPT = gql`
+  query getPrompt($promptId: ID!) {
+    getPrompt(promptId: $promptId) {
+      _id
+      prompt
+      solutions {
+        _id
+        feedback {
+          thoughts
+          username
+          _id
+        }
+        username
+        response
+      }
+    }
+  }
+`;
+
 export const QUERY_SOLUTIONS = gql`
   query GetSolutions {
     getSolutions {
