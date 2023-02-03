@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const InterviewFeed = ({ interviews }) => {
-    if (!interviews.length) {
-        return <h3 className="mt-5">No Posts Yet</h3>
-    }
+
+    
+    // if (!interviews.length) {
+    //     return <h3 className="mt-5">No Posts Yet</h3>
+    // }
 
     return (
         <div className="container col-8 flex-column m-5">
