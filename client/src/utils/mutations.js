@@ -17,43 +17,84 @@ export const SIGNUP = gql`
 `;
 
 export const LOGIN = gql`
-  mutation Login($userCred: Login!) {
-    login(userCred: $userCred) {
-      token
-      user {
-        email
-        firstName
-        lastName
+mutation Login($userCred: Login!) {
+  login(userCred: $userCred) {
+    token
+    user {
+      email
+      firstName
+      lastName
+      username
+      solutions {
         username
-        solutions {
-          username
-          response
-        }
-        thoughts {
-          username
-          thoughts
-        }
+        response
+      }
+      thoughts {
+        username
+        thoughts
       }
     }
-  }
-`;
-
-export const ADD_USER = gql`
-  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $username: String!) {
-    addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, username: $username) {
-      token
-      user {
-        _id
-      }
-    }
-  }
-`;
-
-export const ADD_SOLUTION = gql`
-mutation addSolution($id: ID!, $newSolution: NewSolution!) {
-  addSolution(id: $id, newSolution: $newSolution) {
-    response
-    username
   }
 }`;
 
+export const ADD_SOLUTION = gql`
+mutation addSolution($addSolutionId: ID!, $newSolution: NewSolution!) {
+  addSolution(id: $addSolutionId, newSolution: $newSolution) {
+    username
+    response
+  }
+}`;
+
+export const EDIT_SOLUTION = gql`
+mutation EditSolution($editSolutionId: ID!, $response: String!) {
+  editSolution(id: $editSolutionId, response: $response) {
+    username
+    response
+  }
+}`;
+
+export const REMOVE_SOLUTION = gql`
+mutation RemoveSolution($removeSolutionId: ID!) {
+  removeSolution(id: $removeSolutionId) {
+    username
+    response
+  }
+}`;
+
+export const ADD_FEEDBACK = gql`
+mutation AddFeedback($addFeedbackId: ID!, $newFeedback: NewFeedback!) {
+  addFeedback(id: $addFeedbackId, newFeedback: $newFeedback) {
+    username
+    thoughts
+  }
+}`;
+
+export const EDIT_FEEDBACK = gql`
+mutation EditFeedback($editFeedbackId: ID!, $thoughts: String!) {
+  editFeedback(id: $editFeedbackId, thoughts: $thoughts) {
+    username
+    thoughts
+  }
+}`;
+
+export const REMOVE_FEEDBACK = gql`
+mutation RemoveFeedback($removeFeedbackId: ID!) {
+  removeFeedback(id: $removeFeedbackId) {
+    username
+    thoughts
+  }
+}`;
+
+export const SUBMIT_INFO = gql`
+mutation SubmitInterviewPrompt($interviewForm: NewInfo!) {
+  submitInterviewPrompt(interviewForm: $interviewForm) {
+    _id
+    username
+    location
+    position
+    subject
+    prompt
+    response
+    resFeedback
+  }
+}`;
