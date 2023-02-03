@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { QUERY_ALL_INTERVIEWS } from "../utils/queries";
 
 import Auth from '../utils/auth';
+import { useQuery } from "@apollo/client";
 
-const InterviewFeed = ({ interviews }) => {
+const InterviewFeed = () => {
+
+    const { loading, data } = useQuery(QUERY_ALL_INTERVIEWS);
+    const interviews = data?.getAllInterviewInfo || [];
 
 
-    // if (!interviews.length) {
-    //     return <h3 className="mt-5">No Posts Yet</h3>
-    // }
+
+    if (!interviews.length) {
+        return <h3 className="mt-5">No Posts Yet</h3>
+    }
 
     return (
         <div className="container justify-content-center mt-5">
@@ -26,10 +32,12 @@ const InterviewFeed = ({ interviews }) => {
                         <div className="row card interview-post-item flex-column mt-3 p-3">
                             <div key={interviewInfo._id} className="blog-post">
                                 <h3 className="row">interview experience</h3>
-                                <div>position applied for: {interviewInfo.position}</div>
-                                <div>location of interview: {interviewInfo.location}</div>
+                                <div>username: {interviewInfo.username}</div>
+                                <div>{interviewInfo.location &&<div>location of interview: {interviewInfo.location}</div>}</div>
+                                <div>{interviewInfo.subject &&<div>subject: {interviewInfo.subject}</div>}</div>
                                 <div>prompt received: {interviewInfo.prompt}</div>
                                 <div>interviewee response: {interviewInfo.response}</div>
+                                <div>interviewer feedback: {interviewInfo.resFeedback}</div>
 
                             </div>
                             <div className="row flex-column comment-section mt-3">
