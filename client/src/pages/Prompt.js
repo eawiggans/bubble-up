@@ -11,6 +11,15 @@ const Prompt = () => {
     variables: { promptId: promptId },
   }); 
   const prompt = data?.getPrompt || {};
+  
+  // Change header
+    let header = 'Discussion'
+
+//   if (prompt.solutions.length === 0) {
+//     header = "no comments yet :("
+//   } else {
+//     header = "Discussion"
+//   }
 
     // ! SWAP AUTH !
 
@@ -25,7 +34,7 @@ const Prompt = () => {
                     <div className="mt-5">{error.message}
                     </div> : 
                     
-                <SinglePrompt prompt={prompt} />
+                <SinglePrompt prompt={prompt} header={header}/>
                 }
             </div>;
   }
