@@ -36,3 +36,17 @@ mutation Login($userCred: Login!) {
   }
 }`;
 
+export const ADD_INTERVIEW = gql`
+mutation SubmitInterviewPrompt {
+  submitInterviewPrompt {
+    interviewInfo {
+      username
+      location
+      position
+      subject
+      prompt
+      response
+      
+    }
+  }
+}`;

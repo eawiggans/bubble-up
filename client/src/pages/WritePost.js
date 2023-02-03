@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_POST } from '../utils/mutations';
+import { ADD_INTERVIEW } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const WritePost = () => {
@@ -13,7 +13,7 @@ const WritePost = () => {
         response: '',
 
     });
-    const [addPost, { error, data }] = useMutation(ADD_POST);
+    const [addPost, { error, data }] = useMutation(ADD_INTERVIEW);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
