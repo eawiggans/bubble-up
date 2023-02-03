@@ -101,3 +101,20 @@ export const QUERY_ALL_FEEDBACK = gql`
     }
   }
 `;
+
+export const QUERY_ALL_INTERVIEWS = gql`query ExampleQuery {
+  getAllInterviewInfo {
+    location
+    position
+    subject
+    prompt
+    response
+    resFeedback
+    commFeedBack {
+      thoughts
+      username
+    }
+    username
+  }
+}
+`;

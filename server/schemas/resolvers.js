@@ -195,6 +195,8 @@ const resolvers = {
       return feedback;
     },
     submitInterviewPrompt: async (parent, { interviewForm }, context) => {
+      console.log(InterviewInfo);
+      console.log(context);
       if (context.user) {
         interviewForm['username'] = context.user.username;
         

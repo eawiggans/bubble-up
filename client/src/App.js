@@ -20,6 +20,7 @@ import Prompt from './pages/Prompt';
 // import WriteSolution from './pages/WriteSolution';
 import WritePost from './pages/WritePost';
 import './App.css';
+import InterviewFeed from './pages/InterviewFeed';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -76,6 +77,10 @@ function App() {
                     path="/writepost" 
                 element={<WritePost />} 
               />
+              <Route 
+                    path="/interviewfeed" 
+                element={<InterviewFeed />}
+                />
               {/* <Route 
                     path="/writesolution" 
                 element={<WriteSolution />} 

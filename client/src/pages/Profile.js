@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { GET_USER } from '../utils/mutations';
+import { QUERY_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 
 
 function Profile() {
-  // const { loading, data } = useQuery(GET_USER);
+  // const { loading, data } = useQuery(QUERY_USER);
 
   // const user = data?.user || [];
 
