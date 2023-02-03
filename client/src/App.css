@@ -219,6 +219,9 @@ hr {
 .plus-svg {
   height: 100%;
 }
+.plus-svg-2 {
+  height: 1.8rem;
+}
 .custom-textarea {
   min-width: 100%;
   width: 100%;

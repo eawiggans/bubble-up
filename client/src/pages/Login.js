@@ -12,7 +12,7 @@ function Login(props) {
     event.preventDefault();
     try {
       const mutationResponse = await login({
-        variables: { username: formState.username, password: formState.password },
+        variables: { userCred: {username: formState.username, password: formState.password} },
       });
       const token = mutationResponse.data.login.token;
       console.log(token);

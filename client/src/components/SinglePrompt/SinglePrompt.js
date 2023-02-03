@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import SolutionForm from './SolutionForm'
-const SinglePrompt = ({ prompt, header }) => {
+const SinglePrompt = ({ prompt, header, id }) => {
   console.log(prompt);
 
 
@@ -11,7 +11,7 @@ const SinglePrompt = ({ prompt, header }) => {
       <div className="row card flex-column justify-content-center">
         <h2 className="row justify-content-center pt-3 px-3">{prompt.prompt}</h2>
         <div className="row flex-column">
-          <SolutionForm />
+          <SolutionForm id={prompt._id}/>
         </div>
         <div className="blog-post"></div>
         <div className="row flex-column comment-section">
@@ -20,7 +20,7 @@ const SinglePrompt = ({ prompt, header }) => {
 
           <div className="row comment flex-column mt-2 mx-3">
             {prompt.solutions.map((solutions) => (
-              <Comment key={solutions._id} solutions={solutions} />
+              <Comment key={solutions._id} solutions={solutions} id/>
             ))}
           </div>
         </div>

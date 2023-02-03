@@ -2,33 +2,24 @@ import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import Auth from '../../utils/auth';
 import { ADD_SOLUTION } from '../../utils/mutations';
-import { QUERY_PROMPT } from '../../utils/queries';
 
-const SolutionForm = () => {
+const SolutionForm = ({ id }) => {
+
   const [solutionText, setSolutionText] = useState('');
-  const [addSolution, { error }] = useMutation(ADD_SOLUTION, {
-    update(cache, { data: { addSolution } }) {
-      try {
-        const { prompt } = cache.readQuery({ query: QUERY_PROMPT });
-
-        cache.writeQuery({
-          query: QUERY_PROMPT,
-          data: { prompt: [addSolution, ...prompt] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
-  });
+  const [addSolution, { error }] = useMutation(ADD_SOLUTION);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      console.log('ID: ', id);
       const { data } = await addSolution({
         variables: {
-          solutionText,
-          username: Auth.getProfile().data.username,
+          id,
+          newSolution: {
+            response: solutionText,
+            username: Auth.getProfile().data.username,
+          },
         },
       });
       setSolutionText('');
@@ -37,14 +28,9 @@ const SolutionForm = () => {
     }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-      setSolutionText(value);
-  };
-
   return (
     <form className="px-3 pt-3 row flex-column" onSubmit={handleFormSubmit}>
-      <textarea className="custom-textarea" placeholder="Heres what I think..." value={solutionText} onChange={handleChange}></textarea>
+      <textarea className="custom-textarea" placeholder="Heres what I think..." value={solutionText} onChange={(event) => setSolutionText(event.target.value)}></textarea>
       <div className="row justify-content-end">
         <button className="plus-btn me-3 mt-1" type="submit">
           <svg className="plus-svg" viewBox="0 0 448 512">

@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const SIGNUP = gql`
   mutation AddUser($newUser: Signup!) {
@@ -13,44 +13,34 @@ export const SIGNUP = gql`
         username
       }
     }
-  }`;
+  }
+`;
 
 export const LOGIN = gql`
-mutation Login($userCred: Login!) {
-  login(userCred: $userCred) {
-    token
-    user {
-      email
-      firstName
-      lastName
-      username
-      solutions {
+  mutation Login($userCred: Login!) {
+    login(userCred: $userCred) {
+      token
+      user {
+        email
+        firstName
+        lastName
         username
-        response
-      }
-      thoughts {
-        username
-        thoughts
+        solutions {
+          username
+          response
+        }
+        thoughts {
+          username
+          thoughts
+        }
       }
     }
   }
-}`;
+`;
 
 export const ADD_USER = gql`
-  mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $password: String!
-    $username: String!
-  ) {
-    addUser(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      password: $password
-      username: $username
-    ) {
+  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $username: String!) {
+    addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, username: $username) {
       token
       user {
         _id
@@ -60,13 +50,10 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_SOLUTION = gql`
-mutation addSolution(
-  $response: String!
-  $username: String!
-) {
-  addSolution(
-    response: $response
-    username: $username
-  )
-}`
+mutation addSolution($id: ID!, $newSolution: NewSolution!) {
+  addSolution(id: $id, newSolution: $newSolution) {
+    response
+    username
+  }
+}`;
 
