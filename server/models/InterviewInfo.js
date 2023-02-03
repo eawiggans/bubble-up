@@ -7,15 +7,15 @@ const interviewInfoSchema = new Schema({
   },
   location: {
     type: String,
-    required: true
+    required: false
   },
   position: {
     type: String,
-    required: true
+    required: false
   },
   subject: {
     type: String,
-    required: true
+    required: false
   },
   prompt: {
     type: String,
@@ -31,7 +31,7 @@ const interviewInfoSchema = new Schema({
   },
   commFeedback: [{
     type: String,
-    required: true
+    required: false
   }]
 }, {
   timestamps: true
