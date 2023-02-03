@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const SIGNUP = gql`
   mutation AddUser($newUser: Signup!) {
@@ -13,7 +13,8 @@ export const SIGNUP = gql`
         username
       }
     }
-  }`;
+  }
+`;
 
 export const LOGIN = gql`
 mutation Login($userCred: Login!) {
@@ -37,8 +38,8 @@ mutation Login($userCred: Login!) {
 }`;
 
 export const ADD_SOLUTION = gql`
-mutation AddSolution($addSolutionId: ID!, $newSolution: NewSolution!) {
-  addSolution(id: $addSolutionId, newSolution: $newSolution) {
+mutation addSolution($id: ID!, $newSolution: NewSolution!) {
+  addSolution(id: $id, newSolution: $newSolution) {
     username
     response
   }
