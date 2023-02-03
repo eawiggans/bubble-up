@@ -37,8 +37,8 @@ mutation Login($userCred: Login!) {
 }`;
 
 export const ADD_INTERVIEW = gql`
-mutation SubmitInterviewPrompt {
-  submitInterviewPrompt {
+mutation SubmitInterviewPrompt($interviewForm: NewInfo!) {
+  submitInterviewPrompt(interviewForm: $interviewInfo) {
     interviewInfo {
       username
       location
