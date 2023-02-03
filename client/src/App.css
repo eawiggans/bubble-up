@@ -202,9 +202,35 @@ hr {
   border-bottom-right-radius: 0.25rem;
   text-shadow: 1px 1px 2px var(--col-on-primary);
 }
-.plus-icon {
-  height: 1rem;
+.plus-btn {
+  background-color: transparent;
+  border: none;
+  height: 1.5rem;
+  width: 1.5rem;
   fill: var(--col-on-surface);
+  cursor: pointer;
+}
+.plus-btn:hover .plus-svg {
+  fill: var(--col-p-200)
+}
+.plus-btn:focus:active .plus-svg {
+  fill: var(--col-on-surface)
+}
+.plus-svg {
+  height: 100%;
+}
+.custom-textarea {
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--col-surface);
+  border: 2px solid var(--col-surface3);
+  border-radius: 0.5rem;
+  color: var(--col-on-surface);
 }
 
+.custom-textarea:focus-visible {
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
+}
 /* End styles for blog */

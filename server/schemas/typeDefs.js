@@ -49,8 +49,8 @@ const typeDefs = gql`
   }
 
   input NewSolution {
-    response: String
-    username: String
+    response: String!
+    username: String!
   }
 
   type Feedback {
