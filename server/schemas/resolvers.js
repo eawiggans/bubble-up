@@ -22,8 +22,8 @@ const resolvers = {
         populate: 'feedback'
       });
     },
-    getPrompt: async (parent, { id }) => {
-      return await Prompt.findById(id).populate('solutions').populate({
+    getPrompt: async (parent, { promptId }) => {
+      return await Prompt.findById(promptId).populate('solutions').populate({
         path: 'solutions',
         populate: 'feedback'
       });
