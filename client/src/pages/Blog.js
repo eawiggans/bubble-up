@@ -14,7 +14,7 @@ const Blog = () => {
   }
   if (Auth.loggedIn()) {
     return <div className="container justify-content-center mt-5">
-    {loading ? (<div className='mt-5'>Loading...</div>) : error ? (<div className='mt-5'>{error.message}</div>)
+    {loading ? (<div className='mt-5'>One sec...</div>) : error ? (<div className='mt-5'>{error.message}</div>)
     : 
     <AllPosts prompts={prompts} title="Popular Prompts" />}
     </div>;
