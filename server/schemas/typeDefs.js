@@ -66,6 +66,7 @@ const typeDefs = gql`
 
   type InterviewInfo {
     _id: ID
+    username: String
     location: String
     position: String
     subject: String
