@@ -12,8 +12,8 @@ function Login(props) {
     event.preventDefault();
     try {
       const mutationResponse = await login({
-        variables: { username: formState.username, password: formState.password },
-      });
+        variables: { userCred: { username: formState.username, password: formState.password },
+      } });
       const token = mutationResponse.data.login.token;
       console.log(token);
       Auth.login(token);
@@ -61,7 +61,7 @@ function Login(props) {
           </div>
         ) : null}
           <div className="row justify-content-center">
-            <Link to='/profile'><button className="btn btn-primary mt-2" type="submit">Submit</button></Link>
+            <button className="btn btn-primary mt-2" type="submit">Submit</button>
           </div>
         </form>
         <div className="row justify-content-center mt-3">

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { Link, useParams } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_INTERVIEW } from '../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth';
 
 
 const WritePost = () => {
+
+
     const [formState, setFormState] = useState({
         username: '',
         location: '',
@@ -33,8 +37,7 @@ const WritePost = () => {
 
         try {
             const { data } = await submitInterviewPrompt({
-                variables:
-                {interviewForm: { ...formState } }
+                variables: {interviewForm: { ...formState, username: Auth.getProfile().data.username } }
                     
             });
 
@@ -113,10 +116,10 @@ const WritePost = () => {
                             onChange={handleChange}>
                         </textarea>
                         <div className="row justify-content-end">
-                            <Link to='/interviewfeed'><button
+                            <button
                                 className="btn btn-primary mt-2"
                                 type="submit"
-                            >Submit</button></Link>
+                            >Submit</button>
                         </div>
                     </form>
                 </div>

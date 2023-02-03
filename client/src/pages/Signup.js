@@ -91,7 +91,7 @@ function Signup(props) {
             />
           </div>
           <div className="row justify-content-center">
-            <Link to='/me'><button className="btn btn-primary mt-2" type="submit">Submit</button></Link>
+            <button className="btn btn-primary mt-2" type="submit">Submit</button>
           </div>
         </form>
         <div className="row justify-content-center mt-3">
