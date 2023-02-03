@@ -197,8 +197,10 @@ const resolvers = {
         interviewForm['username'] = context.user.username;
         
         return await InterviewInfo.create(interviewForm);
+      } else {
+        return await InterviewInfo.create(interviewForm);
       }
-      throw new AuthenticationError('You need to be logged in to submit!');
+      // throw new AuthenticationError('You need to be logged in to submit!');
     }
   }
 };
