@@ -9,6 +9,7 @@ const InterviewFeed = () => {
 
     const { loading, data } = useQuery(QUERY_ALL_INTERVIEWS);
     const interviews = data?.getAllInterviewInfo || [];
+    const comments = data?.getAllInterviewInfo.resFeedback;
 
 
 
