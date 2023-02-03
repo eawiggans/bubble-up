@@ -59,3 +59,14 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_SOLUTION = gql`
+mutation addSolution(
+  $response: String!
+  $username: String!
+) {
+  addSolution(
+    response: $response
+    username: $username
+  )
+}`
+
