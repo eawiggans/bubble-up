@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_INTERVIEW } from '../utils/mutations';
-import { QUERY_ME } from '../utils/queries';
+import { SUBMIT_INFO } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 
@@ -20,7 +19,7 @@ const WritePost = () => {
 
     });
 
-    const [submitInterviewPrompt, { error }] = useMutation(ADD_INTERVIEW);
+    const [submitInterviewPrompt, { error }] = useMutation(SUBMIT_INFO);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
