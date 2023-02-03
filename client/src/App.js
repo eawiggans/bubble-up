@@ -16,8 +16,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
-
-import SinglePost from './components/Blog/SinglePost'
+import Prompt from './pages/Prompt';
+// import WriteSolution from './pages/WriteSolution';
 import WritePost from './pages/WritePost';
 import './App.css';
 
@@ -61,8 +61,8 @@ function App() {
                 element={<Signup />} 
               />
               <Route 
-                path="/profile" 
-                element={<Profile />} 
+                path="/me"
+                element={<Profile />}
               />
               <Route 
                 path="/quiz" 
@@ -76,14 +76,19 @@ function App() {
                     path="/writepost" 
                 element={<WritePost />} 
               />
+              {/* <Route 
+                    path="/writesolution" 
+                element={<WriteSolution />} 
+              /> */}
+              <Route 
+                path="/prompt/:promptId" 
+                element={<Prompt />} 
+              />
             {/* <Route 
                 path="/success" 
                 element={<Success />} 
               />
-              <Route 
-                path="/products/:id" 
-                element={<Detail />} 
-              />
+              
               <Route 
                 path="*" 
                 element={<NoMatch />} 

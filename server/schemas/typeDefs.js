@@ -49,8 +49,8 @@ const typeDefs = gql`
   }
 
   input NewSolution {
-    response: String
-    username: String
+    response: String!
+    username: String!
   }
 
   type Feedback {
@@ -96,7 +96,7 @@ const typeDefs = gql`
     getQuizzes: [Quiz]
     getQuiz(id: ID!): Quiz
     getPrompts: [Prompt]
-    getPrompt(id: ID!): Prompt
+    getPrompt(promptId: ID!): Prompt
     getSolutions: [Solution]
     getSolution(id: ID!): Solution
     getAllFeedback: [Feedback]
