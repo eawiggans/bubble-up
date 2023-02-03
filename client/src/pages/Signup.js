@@ -35,24 +35,6 @@ function Signup(props) {
     });
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-    try {
-      const { data } = await addUser({
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        email: formState.email,
-        username: formState.username,
-        password: formState.password
-      });
-
-      Auth.login(data.addUser.token)
-      
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
 
 
@@ -109,7 +91,7 @@ function Signup(props) {
             />
           </div>
           <div className="row justify-content-center">
-            <Link to='/profile'><button className="btn btn-primary mt-2" type="submit">Submit</button></Link>
+            <Link to='/me'><button className="btn btn-primary mt-2" type="submit">Submit</button></Link>
           </div>
         </form>
         <div className="row justify-content-center mt-3">

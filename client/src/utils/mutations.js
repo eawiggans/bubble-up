@@ -38,18 +38,18 @@ mutation Login($userCred: Login!) {
 
 export const ADD_INTERVIEW = gql`
 mutation SubmitInterviewPrompt($interviewForm: NewInfo!) {
-  submitInterviewPrompt(interviewForm: $interviewInfo) {
-    interviewInfo {
-      username
-      location
-      position
-      subject
-      prompt
-      response
-      
-    }
+  submitInterviewPrompt(interviewForm: $interviewForm) {
+    username
+    location
+    position
+    prompt
+    subject
+    response
+    resFeedback
+    
   }
 }`;
+
 export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!

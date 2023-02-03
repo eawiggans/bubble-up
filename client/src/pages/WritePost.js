@@ -12,6 +12,7 @@ const WritePost = () => {
         subject: '',
         prompt: '',
         response: '',
+        resFeedback: ''
 
     });
 
@@ -85,7 +86,7 @@ const WritePost = () => {
                             onChange={handleChange}
                         /></div>
                         <textarea
-                            className="form-input row mt-2"
+                            className="form-input custom-textarea row mt-2"
                             placeholder="what was the interview prompt?"
                             name="prompt"
                             cols="30"
@@ -94,12 +95,21 @@ const WritePost = () => {
                             onChange={handleChange}>
                         </textarea>
                         <textarea
-                            className="form-input row mt-2"
+                            className="form-input custom-textarea row mt-2"
                             placeholder="how did you handle it?"
                             name="response"
                             cols="30"
                             rows="10"
                             value={formState.response}
+                            onChange={handleChange}>
+                        </textarea>
+                        <textarea
+                            className="form-input custom-textarea row mt-2"
+                            placeholder="employer's response?"
+                            name="resFeedback"
+                            cols="30"
+                            rows="10"
+                            value={formState.resFeedback}
                             onChange={handleChange}>
                         </textarea>
                         <div className="row justify-content-end">
