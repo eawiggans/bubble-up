@@ -38,8 +38,8 @@ mutation Login($userCred: Login!) {
 }`;
 
 export const ADD_SOLUTION = gql`
-mutation addSolution($addSolutionId: ID!, $newSolution: NewSolution!) {
-  addSolution(id: $addSolutionId, newSolution: $newSolution) {
+mutation addSolution($id: ID!, $newSolution: NewSolution!) {
+  addSolution(id: $id, newSolution: $newSolution) {
     username
     response
   }

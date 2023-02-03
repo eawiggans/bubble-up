@@ -2,11 +2,31 @@ import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import Auth from '../../utils/auth';
 import { ADD_SOLUTION } from '../../utils/mutations';
+import { QUERY_PROMPT } from '../../utils/queries';
 
 const SolutionForm = ({ id }) => {
 
   const [solutionText, setSolutionText] = useState('');
-  const [addSolution, { error }] = useMutation(ADD_SOLUTION);
+  const [addSolution, { error }] = useMutation(ADD_SOLUTION
+    // - query solutions instead maybe
+    // , {
+    // update(cache, { data: { addSolution } }) {
+    //   try {
+    //     const test = cache.readQuery({ query: QUERY_PROMPT });
+    //       console.log(test);
+    //     cache.writeQuery({
+    //       query: QUERY_PROMPT,
+    //       data: { getPrompt: {solutions: [addSolution, 
+    //         // ...solutions
+    //       ]
+    //       } },
+    //     });
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+    // },
+  //}
+  );
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -23,6 +43,7 @@ const SolutionForm = ({ id }) => {
         },
       });
       setSolutionText('');
+      // window.location.reload
     } catch (err) {
       console.error(err);
     }
