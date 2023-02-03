@@ -9,12 +9,10 @@ const Blog = () => {
   const { loading, error, data } = useQuery(QUERY_PROMPTS);
   const prompts = data?.getPrompts || [];
 
-  // ! SWAP AUTH !
-
-  if (Auth.loggedIn()) {
+  if (!Auth.loggedIn()) {
     return <Navigate to="/" />;
   }
-  if (!Auth.loggedIn()) {
+  if (Auth.loggedIn()) {
     return <div className="container justify-content-center mt-5">
     {loading ? (<div className='mt-5'>Loading...</div>) : error ? (<div className='mt-5'>{error.message}</div>)
     : 
