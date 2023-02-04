@@ -67,6 +67,9 @@ export const GET_QUIZ = gql`
         prompt
         createdAt
         updatedAt
+        solutions {
+          _id
+        }
       }
     }
   }
