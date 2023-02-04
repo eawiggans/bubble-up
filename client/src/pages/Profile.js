@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Tabs, { TabPane } from 'rc-tabs';
 import { useMutation, useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { QUERY_ME } from '../utils/queries';
