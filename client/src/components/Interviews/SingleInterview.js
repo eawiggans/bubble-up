@@ -14,10 +14,12 @@ const SingleInterview = ({ interviews }) => {
                 <div>prompt received: {interviews.prompt}</div>
                 <div>interviewee response: {interviews.response}</div>
                 <div>interviewer feedback: {interviews.resFeedback}</div>
+                <div className='row justify-content-end'>
                 <div className="btn btn-secondary">
             <Link to={`/interview/${interviews._id}`}>
               <b>Join the discussion</b>
             </Link>
+          </div>
           </div>
             </div>
         </div>

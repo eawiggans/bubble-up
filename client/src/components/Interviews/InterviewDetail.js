@@ -9,7 +9,7 @@ const InterviewDetail = ({ interview, header, id }) => {
 
   return (
     <div className="container col-8 flex-column m-5">
-      <div className="row card flex-column justify-content-center">
+      <div className="row flex-column justify-content-center">
       <div className="row card interview-post-item flex-column mt-3 p-3">
             <div className="blog-post">
                 <h3 className="row">interview experience</h3>
@@ -22,8 +22,8 @@ const InterviewDetail = ({ interview, header, id }) => {
             </div>
         </div>
           <div className="row comment flex-column mt-2 mx-3">
-            {interview.commFeedBack.map((commFeedBacks) => (
-              <IntComment key={commFeedBacks._id} commFeedBacks={commFeedBacks} id/>
+            {interview.commFeedback && interview.commFeedback.map((commFeedback) => (
+              <IntComment key={commFeedback._id} commFeedback={commFeedback} id/>
             ))}
           </div>
         </div>

@@ -18,6 +18,7 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
 import Prompt from './pages/Prompt';
 import Interviews from './pages/Interviews';
+import Interview from './pages/Interview';
 // import WriteSolution from './pages/WriteSolution';
 import WritePost from './pages/WritePost';
 import './App.css';
@@ -80,6 +81,10 @@ function App() {
               <Route 
                     path="/interviews" 
                 element={<Interviews />}
+                />
+              <Route 
+                    path="/interview/:interviewId" 
+                element={<Interview />}
                 />
               {/* <Route 
                     path="/writesolution" 

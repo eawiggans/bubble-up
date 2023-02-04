@@ -194,7 +194,7 @@ export const QUERY_ALL_INTERVIEW_INFO = gql`
       resFeedback
       createdAt
       updatedAt
-      commFeedBack {
+      commFeedback {
         _id
         username
         thoughts
@@ -247,24 +247,3 @@ export const QUERY_ALL_INTERVIEWS = gql`query GetAllInterviewInfo {
 }
 `;
 
-export const QUERY_INTERVIEW = gql`query GetInterviewInfo($getInterviewInfoId: ID!) {
-  getInterviewInfo(id: $getInterviewInfoId) {
-    _id
-    commFeedBack {
-      _id
-      thoughts
-      username
-      updatedAt
-      createdAt
-    }
-    location
-    position
-    prompt
-    resFeedback
-    response
-    subject
-    username
-    updatedAt
-    createdAt
-  }
-}`

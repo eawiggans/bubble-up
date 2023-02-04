@@ -2,24 +2,21 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_INTERVIEW } from '../utils/queries';
-import SingleInterview from '../components/Interviews/SingleInterview'
+import { QUERY_INTERVIEW_INFO } from '../utils/queries';
+import InterviewDetail from '../components/Interviews/InterviewDetail';
 
 const Interview = () => {
     const { interviewId } = useParams();
-  const { loading, error, data } = useQuery(QUERY_INTERVIEW, {
-    variables: { interviewId: interviewId },
+    console.log (interviewId)
+  const { loading, error, data } = useQuery(QUERY_INTERVIEW_INFO, {
+    variables: { getInterviewInfoId: interviewId },
   }); 
   const interview = data?.getInterviewInfo || {};
+  console.log(interview)
   
   // Change header
     let header = 'Interview Experience'
 
-//   if (prompt.solutions.length === 0) {
-//     header = "no comments yet :("
-//   } else {
-//     header = "Discussion"
-//   }
 
   if (!Auth.loggedIn()) {
     return <Navigate to="/" />;
@@ -32,7 +29,7 @@ const Interview = () => {
                     <div className="mt-5">{error.message}
                     </div> : 
                     
-                <SingleInterview interview={interview} header={header}/>
+                <InterviewDetail interview={interview} header={header}/>
                 }
             </div>;
   }

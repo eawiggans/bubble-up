@@ -7,9 +7,6 @@ const IntComment = ({ commFeedback }) => {
       <div>
         {commFeedback.username}
       </div>
-      <div>
-        {commFeedback.createdAt || "timestamp"}
-      </div>
       </div>
       <div className="p-2 row">
         <p className="mb-1 comment-body">{commFeedback.thoughts}</p>
