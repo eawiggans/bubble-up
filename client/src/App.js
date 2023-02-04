@@ -17,10 +17,10 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
 import Prompt from './pages/Prompt';
+import Interviews from './pages/Interviews';
 // import WriteSolution from './pages/WriteSolution';
 import WritePost from './pages/WritePost';
 import './App.css';
-import InterviewFeed from './pages/InterviewFeed';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -78,8 +78,8 @@ function App() {
                 element={<WritePost />} 
               />
               <Route 
-                    path="/interviewfeed" 
-                element={<InterviewFeed />}
+                    path="/interviews" 
+                element={<Interviews />}
                 />
               {/* <Route 
                     path="/writesolution" 

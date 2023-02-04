@@ -104,6 +104,7 @@ export const QUERY_ALL_FEEDBACK = gql`
 
 export const QUERY_ALL_INTERVIEWS = gql`query ExampleQuery {
   getAllInterviewInfo {
+    _id
     location
     position
     subject
