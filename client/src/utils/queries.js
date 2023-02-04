@@ -29,6 +29,8 @@ export const QUERY_ME = gql`
       solutions {
         username
         response
+        createdAt
+        updatedAt
       }
       thoughts {
         username
@@ -81,6 +83,10 @@ export const QUERY_PROMPTS = gql`
       prompt
       solutions {
         _id
+        username
+        response
+        createdAt
+        updatedAt
         feedback {
           thoughts
           username
