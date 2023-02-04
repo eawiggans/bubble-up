@@ -37,6 +37,28 @@ mutation Login($userCred: Login!) {
   }
 }`;
 
+export const ADD_PROMPT = gql`
+  mutation AddPrompt($prompt: String!) {
+    addPrompt(prompt: $prompt) {
+      _id
+      prompt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const REMOVE_PROMPT = gql`
+  mutation RemovePrompt($removePromptId: ID!) {
+    removePrompt(id: $removePromptId) {
+      _id
+      prompt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
 export const ADD_SOLUTION = gql`
 mutation addSolution($id: ID!, $newSolution: NewSolution!) {
   addSolution(id: $id, newSolution: $newSolution) {
