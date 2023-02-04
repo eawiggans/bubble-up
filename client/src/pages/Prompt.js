@@ -15,11 +15,11 @@ const Prompt = () => {
   // Change header
     let header = 'Discussion'
 
-//   if (prompt.solutions.length === 0) {
-//     header = "no comments yet :("
-//   } else {
-//     header = "Discussion"
-//   }
+  // if (prompt.solutions.length === 0) {
+  //   header = "no comments yet :("
+  // } else {
+  //   header = "Discussion"
+  // }
 
   if (!Auth.loggedIn()) {
     return <Navigate to="/" />;
