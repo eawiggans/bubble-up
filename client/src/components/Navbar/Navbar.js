@@ -50,7 +50,7 @@ function Navbar() {
             <h1 className="mb-0 mx-3">Bubble Up</h1>
           </div>
           <div className="row flex-row">
-          <Link to="/profile">
+          <Link to="/me">
               <h3 className="mb-0 px-2">Profile</h3>
             </Link>
             <Link to="/blog">

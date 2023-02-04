@@ -89,15 +89,6 @@ function App() {
                 path="/prompt/:promptId" 
                 element={<Prompt />} 
               />
-            {/* <Route 
-                path="/success" 
-                element={<Success />} 
-              />
-              
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
-              /> */}
             </Routes>
         </div>
       </Router>
