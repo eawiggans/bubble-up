@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import Tabs, { TabPane } from 'rc-tabs';
 import { useMutation, useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
+
+import SolutionsUser from '../components/Profile/SolutionsUser'
 
 function Profile() {
   const { username: userParam } = useParams();
@@ -21,25 +22,25 @@ function Profile() {
   const toggleTab = (index) => {
     setToggleState(index);
   };
-
-  if (!Auth.loggedIn()) {
-    return (
-      <div className="container mt-5">
-        <div className="container col-4 flex-column mt-5 p-3">
-          <h2 className="row justify-content-center">Uh Oh!</h2>
-          <p className="row justify-content-center">
-            Please<Link to="/login">&nbsp;log in&nbsp;</Link> to view your profile
-          </p>
-        </div>
-      </div>
-    );
-  }
-  if (loading) {
-    return <div>One sec...</div>;
-  }
-  if (error) {
-    return <div>{error}</div>;
-  } else {
+  // ! SWITCH AUTH
+  // if (Auth.loggedIn()) {
+  //   return (
+  //     <div className="container mt-5">
+  //       <div className="container col-4 flex-column mt-5 p-3">
+  //         <h2 className="row justify-content-center">Uh Oh!</h2>
+  //         <p className="row justify-content-center">
+  //           Please<Link to="/login">&nbsp;log in&nbsp;</Link> to view your profile
+  //         </p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+  // if (loading) {
+  //   return <div>One sec...</div>;
+  // }
+  // if (error) {
+  //   return <div>{error}</div>;
+  // } else {
     return (
       <div className="container mt-5 justify-content-center flex-column">
         <div className="row mt-5 justify-content-center">
@@ -66,12 +67,12 @@ function Profile() {
           </div>
         </div><hr className='m-0'></hr>
         <div className={toggleState === 1 ? 'content content-active' : 'content'}>Interviews</div>
-        <div className={toggleState === 2 ? 'content content-active' : 'content'}>Solutions</div>
+        <div className={toggleState === 2 ? 'content content-active' : 'content'}><SolutionsUser /></div>
         <div className={toggleState === 3 ? 'content content-active' : 'content'}>Complected Prompts</div>
-        <div className={toggleState === 4 ? 'content content-active' : 'content'}>Prompts</div>
+        <div className={toggleState === 4 ? 'content content-active' : 'content'}>Todo Prompts</div>
       </div>
     );
   }
-}
+// }
 
 export default Profile;
