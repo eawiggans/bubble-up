@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Comment = ({ solutions }) => {
+  console.log(solutions);
   return (
     <div className="card-thin my-2">
       <div className="corner-border px-1 row justify-content-space-between">
