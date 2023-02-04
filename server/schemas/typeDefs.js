@@ -123,10 +123,10 @@ const typeDefs = gql`
     addSolution(id: ID!, newSolution: NewSolution!): Solution
     editSolution(id: ID!, response: String!): Solution
     removeSolution(id: ID!): Solution
-    addFeedback(id: ID!, newFeedback: NewFeedback!): Feedback
+    addFeedback(solutionId: ID, infoId: ID, newFeedback: NewFeedback!): Feedback
     editFeedback(id: ID!, thoughts: String!): Feedback
     removeFeedback(id: ID!): Feedback
-    submitInterviewPrompt(interviewForm: NewInfo!): InterviewInfo
+    submitInterviewForm(interviewForm: NewInfo!): InterviewInfo
   }
 `;
 

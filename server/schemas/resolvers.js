@@ -11,10 +11,16 @@ const resolvers = {
       return await User.findOne({ username }).populate('solutions thoughts');
     },
     getQuizzes: async () => {
-      return await Quiz.find({}).populate('prompts');
+      return await Quiz.find({}).populate('prompts').populate({
+        path: 'prompts',
+        populate: 'solutions'
+      });
     },
     getQuiz: async (parent, { id }) => {
-      return await Quiz.findById(id).populate('prompts');
+      return await Quiz.findById(id).populate('prompts').populate({
+        path: 'prompts',
+        populate: 'solutions'
+      });
     },
     getPrompts: async () => {
       return await Prompt.find({}).populate('solutions').populate({
@@ -143,9 +149,10 @@ const resolvers = {
 
       return solution;
     },
-    addFeedback: async (parent, { id, newFeedback }, context) => {
+    addFeedback: async (parent, { solutionId, infoId, newFeedback }, context) => {
       let feedback;
-      newFeedback.solutionId = id;
+      solutionId ? newFeedback.solutionId = solutionId : newFeedback.interviewInfoId = infoId;
+      
       if (context.user) {
         newFeedback.username = context.user.username;
         feedback = await Feedback.create(newFeedback);
@@ -153,16 +160,25 @@ const resolvers = {
         feedback = await Feedback.create(newFeedback);
       }
 
-      const user = await User.findOneAndUpdate(
+      console.log(feedback);
+
+      await User.findOneAndUpdate(
         { username: feedback.username },
         { $addToSet: { thoughts: feedback._id } },
         { runValidators: true }
       );
       
-      await Solution.findByIdAndUpdate(
-        { _id: id },
-        { $addToSet: { feedback: feedback._id } }
-      );
+      if (newFeedback.solutionId) {
+        await Solution.findByIdAndUpdate(
+          { _id: solutionId },
+          { $addToSet: { feedback: feedback._id } }
+        );
+      } else {
+        await InterviewInfo.findByIdAndUpdate(
+          { _id: infoId },
+          { $addToSet: { feedback: feedback._id } }
+        );
+      }
       
       return feedback;
     },
@@ -175,7 +191,6 @@ const resolvers = {
     },
     removeFeedback: async (parent, { id }) => {
       const feedback = await Feedback.findByIdAndDelete(id);
-      console.log(feedback);
 
       if (feedback.username) {
         await User.findOneAndUpdate(
@@ -190,13 +205,16 @@ const resolvers = {
           { _id: feedback.solutionId },
           { $pull: { feedback: feedback._id } }
         );
+      } else {
+        await InterviewInfo.findByIdAndUpdate(
+          { _id: feedback.interviewInfoId },
+          { $pull: { feedback: feedback._id } }
+        );
       }
 
       return feedback;
     },
-    submitInterviewPrompt: async (parent, { interviewForm }, context) => {
-      console.log(InterviewInfo);
-      console.log(context);
+    submitInterviewForm: async (parent, { interviewForm }, context) => {
       if (context.user) {
         interviewForm['username'] = context.user.username;
         
