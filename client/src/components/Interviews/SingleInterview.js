@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SingleInterview = ({ interviews }) => {
     console.log(interviews);
@@ -14,11 +14,11 @@ const SingleInterview = ({ interviews }) => {
                 <div>prompt received: {interviews.prompt}</div>
                 <div>interviewee response: {interviews.response}</div>
                 <div>interviewer feedback: {interviews.resFeedback}</div>
-                {/* <div className="btn btn-secondary">
+                <div className="btn btn-secondary">
             <Link to={`/interview/${interviews._id}`}>
               <b>Join the discussion</b>
             </Link>
-          </div> */}
+          </div>
             </div>
         </div>
 

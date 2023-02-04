@@ -102,7 +102,7 @@ export const QUERY_ALL_FEEDBACK = gql`
   }
 `;
 
-export const QUERY_ALL_INTERVIEWS = gql`query ExampleQuery {
+export const QUERY_ALL_INTERVIEWS = gql`query GetAllInterviewInfo {
   getAllInterviewInfo {
     _id
     location
@@ -119,3 +119,25 @@ export const QUERY_ALL_INTERVIEWS = gql`query ExampleQuery {
   }
 }
 `;
+
+export const QUERY_INTERVIEW = gql`query GetInterviewInfo($getInterviewInfoId: ID!) {
+  getInterviewInfo(id: $getInterviewInfoId) {
+    _id
+    commFeedBack {
+      _id
+      thoughts
+      username
+      updatedAt
+      createdAt
+    }
+    location
+    position
+    prompt
+    resFeedback
+    response
+    subject
+    username
+    updatedAt
+    createdAt
+  }
+}`
