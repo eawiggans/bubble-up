@@ -149,9 +149,10 @@ const resolvers = {
 
       return solution;
     },
-    addFeedback: async (parent, { id, newFeedback }, context) => {
+    addFeedback: async (parent, { solutionId, infoId, newFeedback }, context) => {
       let feedback;
-      newFeedback.solutionId = id;
+      solutionId ? newFeedback.solutionId = solutionId : newFeedback.interviewInfoId = infoId;
+      
       if (context.user) {
         newFeedback.username = context.user.username;
         feedback = await Feedback.create(newFeedback);
@@ -159,16 +160,25 @@ const resolvers = {
         feedback = await Feedback.create(newFeedback);
       }
 
-      const user = await User.findOneAndUpdate(
+      console.log(feedback);
+
+      await User.findOneAndUpdate(
         { username: feedback.username },
         { $addToSet: { thoughts: feedback._id } },
         { runValidators: true }
       );
       
-      await Solution.findByIdAndUpdate(
-        { _id: id },
-        { $addToSet: { feedback: feedback._id } }
-      );
+      if (newFeedback.solutionId) {
+        await Solution.findByIdAndUpdate(
+          { _id: solutionId },
+          { $addToSet: { feedback: feedback._id } }
+        );
+      } else {
+        await InterviewInfo.findByIdAndUpdate(
+          { _id: infoId },
+          { $addToSet: { feedback: feedback._id } }
+        );
+      }
       
       return feedback;
     },
@@ -181,7 +191,6 @@ const resolvers = {
     },
     removeFeedback: async (parent, { id }) => {
       const feedback = await Feedback.findByIdAndDelete(id);
-      console.log(feedback);
 
       if (feedback.username) {
         await User.findOneAndUpdate(
@@ -194,6 +203,11 @@ const resolvers = {
       if (feedback.solutionId) {
         await Solution.findByIdAndUpdate(
           { _id: feedback.solutionId },
+          { $pull: { feedback: feedback._id } }
+        );
+      } else {
+        await InterviewInfo.findByIdAndUpdate(
+          { _id: feedback.interviewInfoId },
           { $pull: { feedback: feedback._id } }
         );
       }
