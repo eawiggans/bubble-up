@@ -17,6 +17,7 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
 import Prompt from './pages/Prompt';
+import Interviews from './pages/Interviews';
 // import WriteSolution from './pages/WriteSolution';
 import WritePost from './pages/WritePost';
 import './App.css';
@@ -76,6 +77,10 @@ function App() {
                     path="/writepost" 
                 element={<WritePost />} 
               />
+              <Route 
+                    path="/interviews" 
+                element={<Interviews />}
+                />
               {/* <Route 
                     path="/writesolution" 
                 element={<WriteSolution />} 

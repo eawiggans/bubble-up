@@ -228,3 +228,21 @@ export const QUERY_INTERVIEW_INFO = gql`
     }
   }
 `;
+
+export const QUERY_ALL_INTERVIEWS = gql`query ExampleQuery {
+  getAllInterviewInfo {
+    _id
+    location
+    position
+    subject
+    prompt
+    response
+    resFeedback
+    commFeedBack {
+      thoughts
+      username
+    }
+    username
+  }
+}
+`;
