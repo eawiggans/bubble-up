@@ -16,7 +16,7 @@ function Profile() {
   const user = data?.me || {};
   console.log(user);
 
-  const profileURL = `https://source.boringavatars.com/beam/150/${user.username}?colors=edc2c7,eb7777,dd4129,c7edc2,77eb77,29dd41`;
+  const profileURL = `https://source.boringavatars.com/beam/150/${user.username}?colors=7dcfff,7aa2f7,bb9af7,b4f9f8,73daca,9ece6a`;
 
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {

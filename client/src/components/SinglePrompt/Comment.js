@@ -1,6 +1,14 @@
 import React from 'react';
 
 const Comment = ({ solutions }) => {
+
+ const dateTime = solutions.createdAt
+ var date = new Date(dateTime * 1);
+ var year = (date.getFullYear())
+ var month = date.toLocaleString('en-US', { month: 'short' });
+ var day = date.getDate().toString().padStart(2, '0');
+ var formattedDate = month + ' ' + day + ' ' + year;
+
   console.log(solutions);
   return (
     <div className="card-thin my-2">
@@ -9,7 +17,7 @@ const Comment = ({ solutions }) => {
         {solutions.username}
       </div>
       <div>
-        {solutions.createdAt || "timestamp"}
+        {formattedDate}
       </div>
       </div>
       <div className="p-2 row">

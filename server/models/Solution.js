@@ -19,8 +19,9 @@ const solutionSchema = new Schema({
     ref: 'Feedback',
     required: false
   }]
-}, {
-  timestamps: true
+}, 
+{
+  timestamps: true,
 });
 
 const Solution = model('Solution', solutionSchema);
