@@ -126,7 +126,7 @@ const typeDefs = gql`
     addFeedback(id: ID!, newFeedback: NewFeedback!): Feedback
     editFeedback(id: ID!, thoughts: String!): Feedback
     removeFeedback(id: ID!): Feedback
-    submitInterviewPrompt(interviewForm: NewInfo!): InterviewInfo
+    submitInterviewForm(interviewForm: NewInfo!): InterviewInfo
   }
 `;
 

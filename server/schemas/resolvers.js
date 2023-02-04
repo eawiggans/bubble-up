@@ -11,10 +11,16 @@ const resolvers = {
       return await User.findOne({ username }).populate('solutions thoughts');
     },
     getQuizzes: async () => {
-      return await Quiz.find({}).populate('prompts');
+      return await Quiz.find({}).populate('prompts').populate({
+        path: 'prompts',
+        populate: 'solutions'
+      });
     },
     getQuiz: async (parent, { id }) => {
-      return await Quiz.findById(id).populate('prompts');
+      return await Quiz.findById(id).populate('prompts').populate({
+        path: 'prompts',
+        populate: 'solutions'
+      });
     },
     getPrompts: async () => {
       return await Prompt.find({}).populate('solutions').populate({
@@ -194,9 +200,7 @@ const resolvers = {
 
       return feedback;
     },
-    submitInterviewPrompt: async (parent, { interviewForm }, context) => {
-      console.log(InterviewInfo);
-      console.log(context);
+    submitInterviewForm: async (parent, { interviewForm }, context) => {
       if (context.user) {
         interviewForm['username'] = context.user.username;
         
