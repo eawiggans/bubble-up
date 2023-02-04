@@ -7,7 +7,8 @@ import Auth from '../utils/auth';
 
 import SolutionsUser from '../components/Profile/SolutionsUser';
 import CompletedPrompts from '../components/Profile/CompletedPrompts';
-import TodoPrompts from '../components/Profile/TodoPrompts'
+import TodoPrompts from '../components/Profile/TodoPrompts';
+import InterviewsUser from '../components/Profile/InterviewsUser'
 
 function Profile() {
   const { username: userParam } = useParams();
@@ -74,7 +75,7 @@ function Profile() {
           <b className='select-none'>Stats</b>
           </div>
         </div><hr className='m-0'></hr>
-        <div className={toggleState === 1 ? 'content content-active justify-content-center' : 'content justify-content-center'}>Interviews</div>
+        <div className={toggleState === 1 ? 'content content-active justify-content-center' : 'content justify-content-center'}><InterviewsUser /></div>
         <div className={toggleState === 2 ? 'content content-active justify-content-center' : 'content justify-content-center'}><SolutionsUser user={user} prompts={prompts} /></div>
         <div className={toggleState === 3 ? 'content content-active justify-content-center' : 'content justify-content-center'}><CompletedPrompts user={user} prompts={prompts} /></div>
         <div className={toggleState === 4 ? 'content content-active justify-content-center' : 'content justify-content-center'}><TodoPrompts user={user} prompts={prompts} /></div>

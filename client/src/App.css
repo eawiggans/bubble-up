@@ -190,7 +190,7 @@ hr {
   color: var(--col-p-500);
 }
 .comment-body {
-  font-size: 0.8125rem;
+  font-size: 0.85rem;
 }
 .blog-post .btn a {
   color: var(--col-on-secondary);
@@ -269,4 +269,17 @@ hr {
 }
 .content-active {
   display: flex;
+}
+
+/* Interview */
+
+.interview-form input {
+  background-color: var(--col-surface);
+  border: var(--line-2) solid var(--col-surface3);
+  border-radius: 0.5rem;
+  width: 50%;
+}
+.interview-form input:focus-visible {
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
 }
