@@ -199,7 +199,7 @@ hr {
   border-right: var(--line-2) solid var(--col-surface3);
   border-bottom: var(--line-2) solid var(--col-surface3);
   border-top-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
   text-shadow: 1px 1px 2px var(--col-on-primary);
 }
 .plus-btn {
@@ -239,3 +239,23 @@ hr {
 /* End styles for blog */
 
 /* Profile */
+
+.tabs {
+  background-color: var(--col-surface);
+  border-top: var(--line-2) solid var(--col-surface2);
+  border-left: var(--line-2) solid var(--col-surface2);
+  border-right: var(--line-2) solid var(--col-surface2);
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  cursor: pointer;
+  transition: margin 150ms ease-out;
+}
+.active-tabs {
+  background-color: var(--col-surface2);
+}
+.content {
+  display: none;
+}
+.content-active {
+  display: block;
+}
