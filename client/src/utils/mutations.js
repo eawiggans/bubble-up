@@ -86,8 +86,8 @@ mutation RemoveFeedback($removeFeedbackId: ID!) {
 }`;
 
 export const SUBMIT_INFO = gql`
-mutation SubmitInterviewPrompt($interviewForm: NewInfo!) {
-  submitInterviewPrompt(interviewForm: $interviewForm) {
+mutation SubmitInterviewForm($interviewForm: NewInfo!) {
+  submitInterviewForm(interviewForm: $interviewForm) {
     _id
     username
     location

@@ -200,7 +200,7 @@ const resolvers = {
 
       return feedback;
     },
-    submitInterviewPrompt: async (parent, { interviewForm }, context) => {
+    submitInterviewForm: async (parent, { interviewForm }, context) => {
       if (context.user) {
         interviewForm['username'] = context.user.username;
         
