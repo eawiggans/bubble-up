@@ -4,22 +4,20 @@ export const QUERY_USERS = gql`
   query GetUsers {
     getUsers {
       _id
-      email
       firstName
       lastName
       username
+      email
       solutions {
+        _id
         username
         response
-      }
-      thoughts {
-        username
-        thoughts
+        createdAt
+        updatedAt
       }
     }
   }
 `;
-
 export const QUERY_ME = gql`
   query Me {
     me {
@@ -60,19 +58,25 @@ export const QUERY_PROMPTS = gql`
 `;
 
 export const QUERY_PROMPT = gql`
-  query getPrompt($promptId: ID!) {
+  query GetPrompts ($promptId: ID!) {
     getPrompt(promptId: $promptId) {
       _id
       prompt
+      createdAt
+      updatedAt
       solutions {
         _id
-        feedback {
-          thoughts
-          username
-          _id
-        }
         username
         response
+        createdAt
+        updatedAt
+        feedback {
+          _id
+          username
+          thoughts
+          createdAt
+          updatedAt
+        }
       }
     }
   }

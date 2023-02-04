@@ -44,7 +44,7 @@ function Navbar() {
             <Link to="/me">
               <h3 className="mb-0 px-2">{user.username}</h3>
             </Link>
-            <button className="btn btn-secondary mx-2" onClick={logout}>
+            <button className="btn btn-secondary mx-2 py-1 px-2" onClick={logout}>
               Logout
             </button>
           </div>
