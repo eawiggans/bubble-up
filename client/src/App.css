@@ -17,6 +17,10 @@
   --col-warning: #f8b425;
   --col-info: #38a5f8;
 }
+.select-none {
+  -webkit-user-select: none;
+  user-select: none;
+}
 ::placeholder {
   color: var(--col-p-200);
   opacity: 1;
