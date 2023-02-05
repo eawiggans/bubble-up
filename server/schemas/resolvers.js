@@ -217,6 +217,9 @@ const resolvers = {
     submitInterviewForm: async (parent, { interviewForm }, context) => {
       if (context.user) {
         interviewForm['username'] = context.user.username;
+
+        const prompt = interviewForm.prompt;
+        await Prompt.create({ prompt });
         
         return await InterviewInfo.create(interviewForm);
       } else {
