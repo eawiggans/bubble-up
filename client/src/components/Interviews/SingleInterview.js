@@ -18,7 +18,7 @@ const SingleInterview = ({ interviews }) => {
             <Link to={`/interview/${interviews._id}`}>
               <b>Join the discussion</b>
             </Link>
-    </div>*/}
+    </div> */}
          
             </div>
         </div>
