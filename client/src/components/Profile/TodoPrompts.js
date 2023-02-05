@@ -15,8 +15,8 @@ const CompletedPrompts = ({ user, prompts }) => {
   console.log(userPrompts);
 
   return (
-    <div className="container col-8 flex-column m-5">
-      <div>
+    <div className="container col-8 flex-column m-4">
+      <div className='mt-2'>
         {userPrompts.map((prompts) => (
           <SinglePost key={prompts._id} prompts={prompts} />
         ))}
