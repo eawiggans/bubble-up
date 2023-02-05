@@ -9,7 +9,8 @@ body {
   /* font-family: 'Ubuntu', sans-serif; */
 
   /* transition: all 150ms ease-in-out; */
-
+  min-width: 576px;
+  max-width: 100dvw;
 }
 
 code {

@@ -8,13 +8,12 @@ const SingleInterview = ({ interviews }) => {
         <div className="row card interview-post-item flex-column mt-3 p-3">
             <div className="blog-post">
             <div>
-              <h3 className="row">{interviews.username}'s interview at {interviews.location}</h3>
+              <h2 className="row">{interviews.username}'s interview at {interviews.location}</h2>
             </div>
-                <div>{interviews.subject && <div><b>Subject:</b> {interviews.subject} </div>}</div>
-                <div>{interviews.position && <div><b>Position:</b> {interviews.position} </div>}</div>
-                <div><b>Prompt received:</b> {interviews.prompt}</div>
-                <div><b>Response:</b> {interviews.response}</div>
-                <div><b>Interviewer feedback:</b> {interviews.resFeedback}</div>
+                <div className='py-1'>{interviews.subject && <div><b>Subject:</b> {interviews.subject} </div>}</div>
+                <div className='py-1'><b>Prompt received:</b> {interviews.prompt}</div>
+                <div className='py-1'><b>Response:</b> {interviews.response}</div>
+                <div className='py-1'><b>Interviewer feedback:</b> {interviews.resFeedback}</div>
                 {/* <div className="btn btn-secondary">
             <Link to={`/interview/${interviews._id}`}>
               <b>Join the discussion</b>

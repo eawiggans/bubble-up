@@ -9,11 +9,11 @@ const SinglePost = ({ prompts }) => {
       <div className="blog-post">
         <h2 className="row">{prompts.prompt}</h2>
         <div className="row justify-content-end">
-          <div className="btn btn-secondary">
+          <button className="btn btn-secondary" type='button'>
             <Link to={`/prompt/${prompts._id}`}>
               <b>Join the discussion</b>
             </Link>
-          </div>
+          </button>
         </div>
       </div>
     </div>
