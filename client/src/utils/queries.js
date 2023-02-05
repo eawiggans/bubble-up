@@ -199,7 +199,7 @@ export const QUERY_ALL_INTERVIEW_INFO = gql`
       resFeedback
       createdAt
       updatedAt
-      commFeedBack {
+      commFeedback {
         _id
         username
         thoughts
@@ -234,7 +234,7 @@ export const QUERY_INTERVIEW_INFO = gql`
   }
 `;
 
-export const QUERY_ALL_INTERVIEWS = gql`query ExampleQuery {
+export const QUERY_ALL_INTERVIEWS = gql`query GetAllInterviewInfo {
   getAllInterviewInfo {
     _id
     location
@@ -251,3 +251,4 @@ export const QUERY_ALL_INTERVIEWS = gql`query ExampleQuery {
   }
 }
 `;
+
