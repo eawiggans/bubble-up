@@ -17,6 +17,17 @@
   --col-warning: #f8b425;
   --col-info: #38a5f8;
 }
+.select-none {
+  -webkit-user-select: none;
+  user-select: none;
+}
+::placeholder {
+  color: var(--col-p-200);
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: var(--col-p-200);
+}
 body::-webkit-scrollbar {
   display: none;
 }
@@ -179,7 +190,7 @@ hr {
   color: var(--col-p-500);
 }
 .comment-body {
-  font-size: 0.8125rem;
+  font-size: 0.85rem;
 }
 .blog-post .btn a {
   color: var(--col-on-secondary);
@@ -199,7 +210,7 @@ hr {
   border-right: var(--line-2) solid var(--col-surface3);
   border-bottom: var(--line-2) solid var(--col-surface3);
   border-top-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
   text-shadow: 1px 1px 2px var(--col-on-primary);
 }
 .plus-btn {
@@ -211,16 +222,23 @@ hr {
   cursor: pointer;
 }
 .plus-btn:hover .plus-svg {
-  fill: var(--col-p-200)
+  fill: var(--col-p-200);
 }
 .plus-btn:focus:active .plus-svg {
-  fill: var(--col-on-surface)
+  fill: var(--col-p-500);
 }
 .plus-svg {
   height: 100%;
 }
 .plus-svg-2 {
   height: 1.8rem;
+  fill: var(--col-p-500);
+}
+.plus-svg-2:hover {
+  fill: var(--col-p-200);
+}
+.plus-svg-2:focus:active {
+  fill: var(--col-p-500);
 }
 .custom-textarea {
   min-width: 100%;
@@ -237,3 +255,62 @@ hr {
   background-color: var(--col-surface2);
 }
 /* End styles for blog */
+
+/* Profile */
+
+.tabs {
+  background-color: var(--col-surface);
+  border-top: var(--line-2) solid var(--col-surface2);
+  border-left: var(--line-2) solid var(--col-surface2);
+  border-right: var(--line-2) solid var(--col-surface2);
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  cursor: pointer;
+  transition: margin 150ms ease-out;
+}
+.active-tabs {
+  background-color: var(--col-surface2);
+}
+.content {
+  display: none;
+}
+.content-active {
+  display: flex;
+}
+.profile-img {
+  border: var(--line-3) solid var(--col-surface3);
+  border-radius: 100%;
+}
+/* - Inputs */
+
+input {
+  background-color: var(--col-surface);
+  border: var(--line-2) solid var(--col-surface3);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  color: var(--col-on-surface);
+}
+input:focus-visible {
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
+}
+
+/* - Interview */
+
+.interview-form input {
+  background-color: var(--col-surface);
+  border: var(--line-2) solid var(--col-surface3);
+  border-radius: 0.5rem;
+  width: 50%;
+}
+.interview-form input:focus-visible {
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
+}
+
+/* - Stats */
+
+td {
+  background-color: var(--col-surface2);
+  border-radius: 0.25rem;
+}

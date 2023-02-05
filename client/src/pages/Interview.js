@@ -2,24 +2,21 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_PROMPT } from '../utils/queries';
-import SinglePrompt from '../components/SinglePrompt/SinglePrompt'
+import { QUERY_INTERVIEW_INFO } from '../utils/queries';
+import InterviewDetail from '../components/Interviews/InterviewDetail';
 
-const Prompt = () => {
-    const { promptId } = useParams();
-  const { loading, error, data } = useQuery(QUERY_PROMPT, {
-    variables: { promptId: promptId },
+const Interview = () => {
+    const { interviewId } = useParams();
+    console.log (interviewId)
+  const { loading, error, data } = useQuery(QUERY_INTERVIEW_INFO, {
+    variables: { getInterviewInfoId: interviewId },
   }); 
-  const prompt = data?.getPrompt || {};
+  const interview = data?.getInterviewInfo || {};
+  console.log(interview)
   
   // Change header
-    let header = 'Discussion'
+    let header = 'Interview Experience'
 
-  // if (prompt.solutions.length === 0) {
-  //   header = "no comments yet :("
-  // } else {
-  //   header = "Discussion"
-  // }
 
   if (!Auth.loggedIn()) {
     return <Navigate to="/" />;
@@ -32,10 +29,10 @@ const Prompt = () => {
                     <div className="mt-5">{error.message}
                     </div> : 
                     
-                <SinglePrompt prompt={prompt} header={header}/>
+                <InterviewDetail interview={interview} header={header}/>
                 }
             </div>;
   }
 };
 
-export default Prompt;
+export default Interview;

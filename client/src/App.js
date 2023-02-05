@@ -17,14 +17,16 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './pages/Profile';
 import Prompt from './pages/Prompt';
+import Interviews from './pages/Interviews';
+import Interview from './pages/Interview';
 // import WriteSolution from './pages/WriteSolution';
 import WritePost from './pages/WritePost';
 import './App.css';
-import InterviewFeed from './pages/InterviewFeed';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
+
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
@@ -78,8 +80,12 @@ function App() {
                 element={<WritePost />} 
               />
               <Route 
-                    path="/interviewfeed" 
-                element={<InterviewFeed />}
+                    path="/interviews" 
+                element={<Interviews />}
+                />
+              <Route 
+                    path="/interview/:interviewId" 
+                element={<Interview />}
                 />
               {/* <Route 
                     path="/writesolution" 
@@ -89,15 +95,6 @@ function App() {
                 path="/prompt/:promptId" 
                 element={<Prompt />} 
               />
-            {/* <Route 
-                path="/success" 
-                element={<Success />} 
-              />
-              
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
-              /> */}
             </Routes>
         </div>
       </Router>

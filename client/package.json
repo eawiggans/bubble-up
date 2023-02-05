@@ -2,7 +2,10 @@
   "name": "bubble-up-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "options": {
+    "allowedHosts": ["localhost", ".localhost"],
+    "proxy": "http://localhost:3001/"
+  },
   "engine": {
     "node": "16.16.0",
     "npm": "9.2.0"
