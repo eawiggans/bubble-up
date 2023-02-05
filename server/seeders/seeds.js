@@ -20,7 +20,13 @@ db.once('open', async () => {
     // Create new documents
     await User.create(userSeeds);
     await Prompt.create(promptSeeds);
-    await InterviewInfo.create(interviewInfoSeeds);
+    interviewInfoSeeds.forEach(async (interviewInfo) => {
+      const prompt = interviewInfo.prompt;
+      await Prompt.create({ prompt })
+
+      await InterviewInfo.create(interviewInfo);
+    });
+    // await InterviewInfo.create(interviewInfoSeeds);
     
     for (let i = 0; i < solutionSeeds.length; i++) {
       const questionKey = solutionSeeds[i].questionKey;
