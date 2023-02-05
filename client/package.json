@@ -2,10 +2,7 @@
   "name": "bubble-up-client",
   "version": "0.1.0",
   "private": true,
-  "options": {
-    "allowedHosts": ["localhost", ".localhost"],
-    "proxy": "http://localhost:3001/"
-  },
+  "proxy": "https://quiet-sands-30810.herokuapp.com/",
   "engine": {
     "node": "16.16.0",
     "npm": "9.2.0"
