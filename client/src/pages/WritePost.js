@@ -42,7 +42,7 @@ const WritePost = () => {
         response: '',
         resFeedback: '',
       });
-      window.location.reload();
+      window.location.assign('/interviews');
     } catch (e) {
       console.error(e);
     }

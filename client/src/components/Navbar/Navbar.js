@@ -32,7 +32,7 @@ function Navbar() {
         <div className="container justify-content-space-between">
           <div className="row ps-1">
             <Logo />
-            <h1 className="mb-0 mx-3">Bubble Up</h1>
+            <h1 className="mb-0 mx-3 logo-header">Bubble Up</h1>
           </div>
           <div className="row flex-row align-items-center">
             <Link to="/interviews">
