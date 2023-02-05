@@ -6,7 +6,9 @@ const SolutionsUser = ({ user, prompts }) => {
   prompts.filter((prompts) => {
     return prompts.solutions.some((solution) => solution.username === desiredUsername);
   });
-
+if (user.solutions.length === 0) {
+    return <div className='mt-5'><h3>answer some prompts</h3></div>
+}
   return (
     <div className="container col-8 flex-column m-5">
       <div className="row card flex-column justify-content-center">
