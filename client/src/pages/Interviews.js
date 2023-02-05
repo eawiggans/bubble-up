@@ -8,6 +8,7 @@ import { QUERY_ALL_INTERVIEWS } from '../utils/queries';
 const Interviews = () => {
     const { loading, error, data } = useQuery(QUERY_ALL_INTERVIEWS);
     const interviews = data?.getAllInterviewInfo || [];
+    
 
     if (!Auth.loggedIn()) {
         return <Navigate to='/' />;
