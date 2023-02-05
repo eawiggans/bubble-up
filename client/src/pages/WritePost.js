@@ -57,7 +57,7 @@ const WritePost = () => {
           <div className="row flex-row justify-content-space-between">
             <h2 className="column">share your interview experience</h2>
             <div className="column">
-              <Link to="/blog">return to post feed</Link>
+              <Link to="/interviews">return to interview feed</Link>
             </div>
           </div>
           <form className="container row flex-column interview-form" onSubmit={handleFormSubmit}>
