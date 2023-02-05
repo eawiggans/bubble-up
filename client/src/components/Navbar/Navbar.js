@@ -20,7 +20,7 @@ function Navbar() {
   const user = data?.me || {};
   console.log(user);
   const blogApprove = () => {
-    // ! true or false if user has answered intro questions
+    // * true or false if user has answered intro questions
   }
   // if logged in Nav
   function showNavigation() {

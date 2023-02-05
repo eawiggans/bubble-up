@@ -9,7 +9,6 @@ const Comment = ({ solutions }) => {
  var day = date.getDate().toString().padStart(2, '0');
  var formattedDate = month + ' ' + day + ' ' + year;
 
-  console.log(solutions);
   return (
     <div className="card-thin my-2">
       <div className="corner-border px-1 row justify-content-space-between">

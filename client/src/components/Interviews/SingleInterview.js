@@ -2,7 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 
 const SingleInterview = ({ interviews }) => {
-    console.log(interviews);
+
     return (
 
         <div className="row card interview-post-item flex-column mt-3 p-3">

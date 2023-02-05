@@ -270,8 +270,11 @@ hr {
 .content-active {
   display: flex;
 }
-
-/* inputs */
+.profile-img {
+  border: var(--line-3) solid var(--col-surface3);
+  border-radius: 100%;
+}
+/* - Inputs */
 
 input {
   background-color: var(--col-surface);
@@ -285,7 +288,7 @@ input:focus-visible {
   background-color: var(--col-surface2);
 }
 
-/* Interview */
+/* - Interview */
 
 .interview-form input {
   background-color: var(--col-surface);
@@ -296,4 +299,11 @@ input:focus-visible {
 .interview-form input:focus-visible {
   outline: var(--col-surface3) auto 1px;
   background-color: var(--col-surface2);
+}
+
+/* - Stats */
+
+td {
+  background-color: var(--col-surface2);
+  border-radius: 0.25rem;
 }
