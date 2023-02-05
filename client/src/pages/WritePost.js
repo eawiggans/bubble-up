@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { Link, Navigate } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
 import { SUBMIT_INFO } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const WritePost = () => {
-
-    const userAuthName = Auth.getProfile().data.username
+  const userAuthName = Auth.getProfile().data.username;
   const [formState, setFormState] = useState({
     location: '',
     position: '',
@@ -42,13 +41,15 @@ const WritePost = () => {
         prompt: '',
         response: '',
         resFeedback: '',
-      })
+      });
       window.location.reload();
     } catch (e) {
       console.error(e);
     }
   };
-
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className="container justify-content-center mt-5">
       <div className="container col-8 flex-column m-5">
@@ -60,9 +61,7 @@ const WritePost = () => {
             </div>
           </div>
           <form className="container row flex-column interview-form" onSubmit={handleFormSubmit}>
-          <h3 className='mb-1'>
-            {userAuthName}
-          </h3>
+            <h3 className="mb-1">{userAuthName}</h3>
             <div>
               <input className="form-input p-1" placeholder="Company" name="location" type="text" value={formState.location} onChange={handleChange} />
             </div>
