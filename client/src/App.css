@@ -232,6 +232,13 @@ hr {
 }
 .plus-svg-2 {
   height: 1.8rem;
+  fill: var(--col-p-500);
+}
+.plus-svg-2:hover {
+  fill: var(--col-p-200);
+}
+.plus-svg-2:focus:active {
+  fill: var(--col-p-500);
 }
 .custom-textarea {
   min-width: 100%;

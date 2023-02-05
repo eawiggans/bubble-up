@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { Link, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { QUERY_ME } from '../utils/queries';
 import { QUERY_PROMPTS } from '../utils/queries';
 import { QUERY_ALL_INTERVIEWS } from '../utils/queries';
@@ -34,16 +34,7 @@ function Profile() {
   };
 
   if (!Auth.loggedIn()) {
-    return (
-      <div className="container mt-5">
-        <div className="container col-4 flex-column mt-5 p-3">
-          <h2 className="row justify-content-center">Uh Oh!</h2>
-          <p className="row justify-content-center">
-            Please<Link to="/login">&nbsp;log in&nbsp;</Link> to view your profile
-          </p>
-        </div>
-      </div>
-    );
+    return <Navigate to="/" />;
   }
   if (loadingMe) {
     return <div>One sec...</div>;
