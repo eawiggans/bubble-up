@@ -24,7 +24,7 @@ import WritePost from './pages/WritePost';
 import './App.css';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 
