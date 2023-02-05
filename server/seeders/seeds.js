@@ -34,6 +34,8 @@ db.once('open', async () => {
         { runValidators: true }
       );
 
+      console.log(questionKey);
+
       const { _id: promptId } = await Prompt.findOneAndUpdate(
         { prompt: { $regex: questionKey } },
         { $addToSet: { solutions: solutionId } }
