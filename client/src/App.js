@@ -27,6 +27,7 @@ const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
 });
 
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -94,15 +95,6 @@ function App() {
                 path="/prompt/:promptId" 
                 element={<Prompt />} 
               />
-            {/* <Route 
-                path="/success" 
-                element={<Success />} 
-              />
-              
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
-              /> */}
             </Routes>
         </div>
       </Router>

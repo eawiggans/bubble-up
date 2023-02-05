@@ -43,7 +43,7 @@ const SolutionForm = ({ id }) => {
         },
       });
       setSolutionText('');
-      // window.location.reload
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }

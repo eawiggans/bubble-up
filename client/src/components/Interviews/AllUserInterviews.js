@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SingleInterview from './SingleInterview';
 
-const AllInterviews = ({ interviews, title }) => {
+const AllUserInterviews = ({ interviews, title }) => {
   return (
-    <div className="container col-8 flex-column m-5">
+    <div className="container col-8 flex-column mb-5">
       <div className="row card flex-column justify-content-center">
         <h2 className="row justify-content-center mb-0 pt-3">{title}</h2>
         <div className="row flex-row justify-content-end">
@@ -24,4 +24,4 @@ const AllInterviews = ({ interviews, title }) => {
   );
 };
 
-export default AllInterviews;
+export default AllUserInterviews;
