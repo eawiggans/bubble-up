@@ -270,8 +270,25 @@ hr {
 .content-active {
   display: flex;
 }
+.profile-img {
+  border: var(--line-3) solid var(--col-surface3);
+  border-radius: 100%;
+}
+/* - Inputs */
 
-/* Interview */
+input {
+  background-color: var(--col-surface);
+  border: var(--line-2) solid var(--col-surface3);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  color: var(--col-on-surface);
+}
+input:focus-visible {
+  outline: var(--col-surface3) auto 1px;
+  background-color: var(--col-surface2);
+}
+
+/* - Interview */
 
 .interview-form input {
   background-color: var(--col-surface);
@@ -282,4 +299,11 @@ hr {
 .interview-form input:focus-visible {
   outline: var(--col-surface3) auto 1px;
   background-color: var(--col-surface2);
+}
+
+/* - Stats */
+
+td {
+  background-color: var(--col-surface2);
+  border-radius: 0.25rem;
 }
