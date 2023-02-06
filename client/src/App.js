@@ -7,7 +7,6 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import { StoreProvider } from './utils/GlobalState';
 
 import Home from './pages/Home';
 import Blog from './pages/Blog';
@@ -24,7 +23,7 @@ import WritePost from './pages/WritePost';
 import './App.css';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 
